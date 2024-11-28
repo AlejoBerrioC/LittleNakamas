@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/stylesMenu.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Parents Panel: Little Nakamas</title>
+</head>
+<body>
+    <div class="container">
+        <div class="table">
+            <div class="table-title">
+                <div class="row">
+                    <h1>Manage <b>Parents</b></h1>
+                </div>
+                <div class="add-delete-boutons">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-parent-modal"><img src="static/images/Tables/add.png"><span>Add New Parent</span></button>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#delete-parent-modal"><img src="static/images/Tables/deleteT.png"><span>Delete</span></button>
+                </div>
+            </div>
+            <div class="table-content">
+                <table>
+                    <thead>
+                        <th></th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Last Name</th>
+                        <th>Phone Number</th>
+                        <th>Actions</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="checkbox">
+                                    <input type="checkbox" id="checkbox1">
+                                    <label for="checkbox1"></label>
+                                </span>
+                            </td>
+                            <td>1</td>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>(514) 123-4567</td>
+                            <td>
+                                <a title="Edit" data-toggle="modal" data-target="#edit-parent-modal"><img src="static/images/Tables/edit.png"></a>
+                                <a title="Delete" data-toggle="modal" data-target="#delete-parent-modal"><img src="static/images/Tables/delete.png"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="checkbox">
+                                    <input type="checkbox" id="checkbox2">
+                                    <label for="checkbox2"></label>
+                                </span>
+                            </td>
+                            <td>2</td>
+                            <td>Juan</td>
+                            <td>Berrio</td>
+                            <td>(514) 123-4567</td>
+                            <td>
+                                <a title="Edit" data-toggle="modal" data-target="#edit-parent-modal"><img src="static/images/Tables/edit.png"></a>
+                                <a title="Delete" data-toggle="modal" data-target="#delete-parent-modal"><img src="static/images/Tables/delete.png"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="checkbox">
+                                    <input type="checkbox" id="checkbox3">
+                                    <label for="checkbox3"></label>
+                                </span>
+                            </td>
+                            <td>3</td>
+                            <td>Juan David</td>
+                            <td>Berrio</td>
+                            <td>(514) 123-4567</td>
+                            <td>
+                                <a title="Edit" data-toggle="modal" data-target="#edit-parent-modal"><img src="static/images/Tables/edit.png"></a>
+                                <a title="Delete" data-toggle="modal" data-target="#delete-parent-modal"><img src="static/images/Tables/delete.png"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Add Parent Modal -->
+    <div id="add-parent-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h3 class="modal-title">Add New Parent</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Parent Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Parent Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Parent Last Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Parent Last Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="text" class="form-control" placeholder="Enter Parent Phone Number">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add Parent</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Delete Parent Modal -->
+    <div id="delete-parent-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h3 class="modal-title">Delete Parent</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete these records?</p>
+                        <p class="text-warning"><small>This action cannot be undone.</small></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--Edit Parent Modal-->
+    <div id="edit-parent-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h3 class="modal-title">Edit Parent</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Parent Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Parent Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Parent Last Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Parent Last Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="text" class="form-control" placeholder="Enter Parent Phone Number">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Edit Parent</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
