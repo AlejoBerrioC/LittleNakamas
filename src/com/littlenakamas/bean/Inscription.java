@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class Inscription {
     private Date dateInscription;
-    private Enfant enfant = new Enfant();
-    private Employe employe = new Employe();
+    private Enfant enfant;
+    private Employe employe;
 
     public Inscription(Date dateInscription, Enfant enfant, Employe employe) {
         this.dateInscription = dateInscription;
