@@ -27,8 +27,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="Students.jsp" target="contentFrame">
-                        <img src="static/images/Index/reading-book (1).png" alt="">&nbsp;Students
+                    <a href="Childrens.jsp" target="contentFrame">
+                        <img src="static/images/Index/reading-book (1).png" alt="">&nbsp;Childrens
                     </a>
                 </li>               
                 <li class="dropdown"><a href="Employees.jsp" target="contentFrame"><img src="static/images/Index/employees.png" alt="">&nbsp;Employees</a>
@@ -37,22 +37,15 @@
                         <li><a href="Admins.jsp" target="contentFrame"><img src="static/images/Index/admins.png" alt="">&nbsp;Admins</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="Schools.jsp" target="contentFrame">
-                        <img src="static/images/Index/school.png" alt="">&nbsp;Schools
-                    </a> 
-                </li>
                 <li><a href="Parents.jsp" target="contentFrame">
                         <img src="static/images/Index/parent.png" alt="">&nbsp;Parents
                     </a> 
                 </li>
-                <li><img src="static/images/Index/payment.png" alt="">&nbsp;Income</li>
                 <li>
                     <a href="AboutUs.jsp" target="contentFrame">
                         <img src="static/images/Index/aboutus.png" alt="">&nbsp;About Us 
                     </a>
                 </li>
-                <li><img src="static/images/Index/help-web-button.png" alt="">&nbsp;Help</li>
                 <li><img src="static/images/Index/settings.png" alt="">&nbsp;Settings </li>
             </ul>
         </div>
