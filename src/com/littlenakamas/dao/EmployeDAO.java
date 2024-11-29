@@ -18,12 +18,15 @@ public class EmployeDAO {
                 "VALUES (?, ?, 'Educatrice', ?, ?)";
 
         try {
+            System.out.println("Test print");
             pst = conn.getConn().prepareStatement(query);
             pst.setString(1, newTeacher.nomEmp);
             pst.setString(2, newTeacher.preEmp);
             pst.setString(3, newTeacher.getDiplome());
             pst.setInt(4, newTeacher.getNbEnfant());
             pst.executeUpdate();
+            System.out.println("Teacher ajouter");
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -90,7 +93,7 @@ public class EmployeDAO {
     }
 
     public ArrayList<Employe> getEmployes() {
-        String query = "SELECT Numemp, Nomemp, Preemp, Typeemp FROM Employe";
+        String query = "SELECT Numemp, Nomemp, Preemp FROM Employe";
         ArrayList<Employe> employes = new ArrayList<>();
         try {
             pst = conn.getConn().prepareStatement(query);
@@ -173,17 +176,31 @@ public class EmployeDAO {
         Employe employe = null;
         try {
             pst = conn.getConn().prepareStatement(query);
-            pst.setString(1, name);
-            pst.setString(2, lastname);
+            pst.setString(1, lastname);
+            pst.setString(2, name);
             pst.setString(3, password);
             rs = pst.executeQuery();
             if (rs.next()) {
                 employe = new Employe(rs.getInt("Numemp"), rs.getString("Nomemp"),
                         rs.getString("Preemp"));
+                System.out.println("Name: " + employe.nomEmp);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return employe;
+    }
+
+    public static void main(String[] args) {
+        EmployeDAO employeDAO = new EmployeDAO();
+
+        employeDAO.addTeacher(new Educatrice(1,"Alejandro","Berrio","AEC", 3));
+        ArrayList<Employe> employes = employeDAO.getEmployes();
+
+        for(Employe e:employes){
+            System.out.println("Name: " + e.nomEmp);
+        }
+
+
     }
 }

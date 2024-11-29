@@ -13,7 +13,7 @@ import java.io.IOException;
 @WebServlet("/index")
 public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher("/login.jsp").forward(req,resp);
+        this.getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 
     @Override
@@ -25,9 +25,14 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         Employe employe = empD.getEmployeByLogin(name, lastName, password);
+        System.out.println("Name :" + name + "Lastname: " + lastName + "Password: " + password);
         if (employe != null) {
+            System.out.println("Home");
+            this.getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);
+        } else {
+            System.out.println("Login encore");
             this.getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
         }
-            this.getServletContext().getRequestDispatcher("/login.jsp").forward(req, resp);
+
     }
 }
