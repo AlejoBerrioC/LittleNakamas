@@ -2,6 +2,7 @@ package com.littlenakamas.dao;
 
 import com.littlenakamas.bean.Employe;
 import com.littlenakamas.bean.Enfant;
+import com.littlenakamas.bean.Inscription;
 import com.littlenakamas.util.DbConnection;
 
 import java.sql.*;
@@ -25,9 +26,23 @@ public class InscriptionDAO {
         }
     }
 
-    public Date getDate() {
-        String query = "SELECT ";
+    public Inscription getDate(int numEnf, int numEmp) {
+        String query = "SELECT * FROM Inscription WHERE Numenf = ? AND Numemp = ?";
+        Inscription inscription = null;
 
-        return null;
+        try {
+            pst = conn.getConn().prepareStatement(query);
+            pst.setInt(1, numEnf);
+            pst.setInt(2, numEmp);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                inscription = new Inscription(rs.getDate("Dateinscription"), EnfantDAO.getChildrenByNum(rs.getInt("Numenf")),
+                        EmployeDAO.getEmployeByNumEmp(rs.getInt("Numemp")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return inscription;
     }
 }

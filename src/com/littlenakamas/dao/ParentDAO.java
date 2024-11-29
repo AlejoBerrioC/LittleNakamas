@@ -73,4 +73,26 @@ public class ParentDAO {
 
         return parents;
     }
+
+    public static Parent getParenByTel(String numTel) {
+        DbConnection conn = new DbConnection();
+        PreparedStatement pst;
+        ResultSet rs;
+        String query = "SELECT * FROM Parent WHERE Numtel = ?";
+        Parent parent = null;
+
+        try {
+            pst = conn.getConn().prepareStatement(query);
+            pst.setString(1, numTel);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                parent = new Parent(rs.getString("Numtel"),
+                        rs.getString("Nompar"), rs.getString("Prepar"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return parent;
+    }
 }

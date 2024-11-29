@@ -40,7 +40,7 @@ public class EnfantDAO {
     }
 
     public void updateEnfant(Enfant enfant, int numEnf) {
-        String query = "UPDATE Enfant SET Nomenf = ?, Preenf = ?, Ageenf = ?, Numtelparent = ? WHERE Numenf = ?";
+        String query = "UPDATE Enfant SET Nomenf = ?, Prenenf = ?, Ageenf = ?, Numtelparent = ? WHERE Numenf = ?";
 
         try {
             pst = conn.getConn().prepareStatement(query);
@@ -56,19 +56,41 @@ public class EnfantDAO {
     }
 
     public ArrayList<Enfant> getChildrens() {
-        String query = "SELECT Numenf, Nomenf, Preenf, Ageenf, Numtelparent FROM Enfant";
+        String query = "SELECT Numenf, Nomenf, Prenenf, Ageenf, Numtelparent FROM Enfant";
         ArrayList<Enfant> enfants = new ArrayList<>();
 
         try {
             pst = conn.getConn().prepareStatement(query);
             rs = pst.executeQuery();
             while (rs.next()) {
-
+                Enfant enfant = new Enfant(rs.getInt("Numenf"), rs.getString("Nomenf"),
+                        rs.getString("Prenenf"), rs.getInt("Ageenf"), ParentDAO.getParenByTel(rs.getString("Numtelparent")));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-        return null;
+        return enfants;
+    }
+
+    public static Enfant getChildrenByNum(int numEnf) {
+        DbConnection conn = new DbConnection();
+        PreparedStatement pst;
+        ResultSet rs;
+        String query = "SELECT Numenf, Nomenf, Prenenf, Ageenf, Numtelparent FROM Enfant WHERE Numenf = ?";
+        Enfant enfant = null;
+        try {
+            pst = conn.getConn().prepareStatement(query);
+            pst.setInt(1, numEnf);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                enfant = new Enfant(rs.getInt("Numenf"), rs.getString("Nomenf"),
+                        rs.getString("Prenenf"), rs.getInt("Ageeng"), ParentDAO.getParenByTel(rs.getString("Numtelparent")));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return enfant;
     }
 }

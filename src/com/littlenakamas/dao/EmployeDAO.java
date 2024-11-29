@@ -144,4 +144,24 @@ public class EmployeDAO {
 
         return administratifs;
     }
+
+    public static Employe getEmployeByNumEmp(int numEmp) {
+        DbConnection conn = new DbConnection();
+        PreparedStatement pst;
+        ResultSet rs;
+        String query = "SELECT Numemp, Nomemp, Preemp FROM Employe WHERE Numemp = ?";
+        Employe employe = null;
+        try {
+            pst = conn.getConn().prepareStatement(query);
+            pst.setInt(1, numEmp);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                employe = new Employe(rs.getInt("Numemp"), rs.getString("Nomemp"),
+                        rs.getString("Preemp"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return employe;
+    }
 }
