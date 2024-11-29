@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 
 <head>
@@ -16,18 +19,19 @@
             <div class="logo-garderie">
                 <img src="static/images/Index/logo_garderie.png" alt="logo-garderie">
             </div>
-            <form name="login-form" method="post">
-                <label for="name">User Name:</label> <br/>
+            <form name="login-form" method="post" action="index">
+                <label for="name">Name:</label> <br/>
                 <input type="text" id="name" name="name" length="16"> <br/>
+                <label for="lastname">LastName:</label> <br/>
+                <input type="text" id="lastname" name="lastname" length="16"> <br/>
                 <label for="password">Password: </label> <br/>
                 <input type="password" id="pass" name="pass" length="16"> <br/>
-                <button type="button" id="login">LogIn</button> 
-                <button type="button" id="register">Register</button>
+                <button type="button" id="login">LogIn</button>
             </form>
         </div>
         <div class="background">
             <h1>Little Nakamas</h1>
-            <img src="../static/imagesLogin-Aboutus/pngegg.png" alt="LittleNakamas">    
+            <img src="static/images/Login-Aboutus/pngegg.png" alt="LittleNakamas">
         </div>
     </div>
 </body>
