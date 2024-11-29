@@ -191,16 +191,4 @@ public class EmployeDAO {
         return employe;
     }
 
-    public static void main(String[] args) {
-        EmployeDAO employeDAO = new EmployeDAO();
-
-        employeDAO.addTeacher(new Educatrice(1,"Alejandro","Berrio","AEC", 3));
-        ArrayList<Employe> employes = employeDAO.getEmployes();
-
-        for(Employe e:employes){
-            System.out.println("Name: " + e.nomEmp);
-        }
-
-
-    }
 }

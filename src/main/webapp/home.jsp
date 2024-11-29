@@ -27,27 +27,27 @@
                     </a>
                 </li>
                 <li>
-                    <a href="Childrens.jsp" target="contentFrame">
+                    <a href="childrens.jsp" target="contentFrame">
                         <img src="static/images/Index/reading-book (1).png" alt="">&nbsp;Childrens
                     </a>
                 </li>               
-                <li class="dropdown"><a href="Employees.jsp" target="contentFrame"><img src="static/images/Index/employees.png" alt="">&nbsp;Employees</a>
+                <li class="dropdown"><a href="employees.jsp" target="contentFrame"><img src="static/images/Index/employees.png" alt="">&nbsp;Employees</a>
                     <ul class="dropdown-content">
-                        <li><a href="Teachers.jsp" target="contentFrame"><img src="static/images/Index/teacher.png" alt="">&nbsp;Teachers</a></li>
-                        <li><a href="Admins.jsp" target="contentFrame"><img src="static/images/Index/admins.png" alt="">&nbsp;Admins</a></li>
+                        <li><a href="teachers.jsp" target="contentFrame"><img src="static/images/Index/teacher.png" alt="">&nbsp;Teachers</a></li>
+                        <li><a href="admins.jsp" target="contentFrame"><img src="static/images/Index/admins.png" alt="">&nbsp;Admins</a></li>
                     </ul>
                 </li>
-                <li><a href="Parents.jsp" target="contentFrame">
+                <li><a href="parents.jsp" target="contentFrame">
                         <img src="static/images/Index/parent.png" alt="">&nbsp;Parents
                     </a> 
                 </li>
                 <li>
-                    <a href="AboutUs.jsp" target="contentFrame">
+                    <a href="aboutUs.jsp" target="contentFrame">
                         <img src="static/images/Index/aboutus.png" alt="">&nbsp;About Us 
                     </a>
                 </li>
                 <li>
-                    <a href="Settings.jsp" target="contentFrame">
+                    <a href="settings.jsp" target="contentFrame">
                         <img src="static/images/Index/settings.png" alt="">&nbsp;Settings
                     </a>
                 </li>
@@ -55,7 +55,7 @@
         </div>
     </div>
     <div class="containerIndex">
-        <iframe src="dashboard.jsp" name="contentFrame" id="contentFrame" width="100%" height="100%"></iframe>
+        <iframe src="dashboard" name="contentFrame" id="contentFrame" width="100%" height="100%"></iframe>
     </div>
 
 </body>

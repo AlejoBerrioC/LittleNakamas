@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 
 <head>
@@ -18,7 +21,7 @@
                     <button type="submit"><img src="static/images/Index/search.png" alt=""></button>
                 </div>
                 <div class="user">
-                    <a href="Parents.jsp" class="btn">Add New Children</a>
+                    <a href="parents" class="btn">Add New Children</a>
                     <img src="static/images/Index/notifications.png" alt="">
                     <div class="img-case">
                         <img src="static/images/Index/user.png" alt="">
@@ -30,7 +33,7 @@
             <div class="cards">
                 <div class="card">
                     <div class="box">
-                        <h1>2194</h1>
+                        <h1><c:out value="${}"/></h1>
                         <h3>Childrens</h3>
                     </div>
                     <div class="icon-case">
