@@ -164,4 +164,26 @@ public class EmployeDAO {
         }
         return employe;
     }
+
+    public Employe getEmployeByLogin(String name, String lastname, String password) {
+        DbConnection conn = new DbConnection();
+        PreparedStatement pst;
+        ResultSet rs;
+        String query = "SELECT * FROM Employe WHERE NOMEMP = ? AND PREEMP = ? AND PASSWORD = ?";
+        Employe employe = null;
+        try {
+            pst = conn.getConn().prepareStatement(query);
+            pst.setString(1, name);
+            pst.setString(2, lastname);
+            pst.setString(3, password);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                employe = new Employe(rs.getInt("Numemp"), rs.getString("Nomemp"),
+                        rs.getString("Preemp"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return employe;
+    }
 }
