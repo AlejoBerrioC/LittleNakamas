@@ -23,7 +23,6 @@
             <div class="table-content">
                 <table>
                     <thead>
-                    <th></th>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Capacity</th>
@@ -31,12 +30,6 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
-                                <span class="checkbox">
-                                    <input type="checkbox" id="checkbox1">
-                                    <label for="checkbox1"></label>
-                                </span>
-                            </td>
                             <td>1</td>
                             <td>Little Nakamas</td>
                             <td>50</td>

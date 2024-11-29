@@ -19,14 +19,13 @@
                     <h1>Manage <b>Administrators</b></h1>
                 </div>
                 <div class="add-delete-boutons">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-admins-modal"><img src="static/images/Tables/add.png"><span>Add New Teacher</span></button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-admins-modal"><img src="static/images/Tables/add.png"><span>Add New Administrator</span></button>
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#delete-admins-modal"><img src="static/images/Tables/deleteT.png"><span>Delete</span></button>
                 </div>
             </div>
             <div class="table-content">
                 <table>
                     <thead>
-                    <th></th>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Last Name</th>
@@ -36,12 +35,6 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
-                                <span class="checkbox">
-                                    <input type="checkbox" id="checkbox1">
-                                    <label for="checkbox1"></label>
-                                </span>
-                            </td>
                             <td>1</td>
                             <td>Jean</td>
                             <td>Treamblay</td>
@@ -53,12 +46,6 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <span class="checkbox">
-                                    <input type="checkbox" id="checkbox2">
-                                    <label for="checkbox2"></label>
-                                </span>
-                            </td>
                             <td>2</td>
                             <td>Juan</td>
                             <td>Berrio</td>

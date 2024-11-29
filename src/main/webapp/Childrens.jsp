@@ -16,57 +16,47 @@
         <div class="table">
             <div class="table-title">
                 <div class="row">
-                    <h1>Manage <b>Students</b></h1>
+                    <h1>Manage <b>Childrens</b></h1>
                 </div>
                 <div class="add-delete-boutons">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-student-modal"><img src="static/images/Tables/add.png"><span>Add New Student</span></button>
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#delete-student-modal"><img src="static/images/Tables/deleteT.png"><span>Delete</span></button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-children-modal"><img src="static/images/Tables/add.png"><span>Add New Children</span></button>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#delete-children-modal"><img src="static/images/Tables/deleteT.png"><span>Delete</span></button>
                 </div>
             </div>
             <div class="table-content">
                 <table>
                     <thead>
-                    <th></th>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Last Name</th>
                     <th>Age</th>
                     <th>Parent</th>
+                    <th>Date Inscription</th>
                     <th>Actions</th>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
-                                <span class="checkbox">
-                                    <input type="checkbox" id="checkbox1">
-                                    <label for="checkbox1"></label>
-                                </span>
-                            </td>
                             <td>1</td>
                             <td>John</td>
                             <td>Doe</td>
                             <td>2</td>
                             <td>John Doe</td>
+                            <td>2024-11-28</td>
                             <td>
-                                <a title="Edit" data-toggle="modal" data-target="#edit-student-modal"><img src="static/images/Tables/edit.png"></a>
-                                <a title="Delete" data-toggle="modal" data-target="#delete-student-modal"><img src="static/images/Tables/delete.png"></a>
+                                <a title="Edit" data-toggle="modal" data-target="#edit-children-modal"><img src="static/images/Tables/edit.png"></a>
+                                <a title="Delete" data-toggle="modal" data-target="#delete-children-modal"><img src="static/images/Tables/delete.png"></a>
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <span class="checkbox">
-                                    <input type="checkbox" id="checkbox2">
-                                    <label for="checkbox2"></label>
-                                </span>
-                            </td>
                             <td>2</td>
                             <td>Juan</td>
                             <td>Berrio</td>
                             <td>3</td>
                             <td>Liliana Castaneda</td>
+                            <td>2024-11-28</td>
                             <td>
-                                <a title="Edit" data-toggle="modal" data-target="#edit-student-modal"><img src="static/images/Tables/edit.png"></a>
-                                <a title="Delete" data-toggle="modal" data-target="#delete-student-modal"><img src="static/images/Tables/delete.png"></a>
+                                <a title="Edit" data-toggle="modal" data-target="#edit-children-modal"><img src="static/images/Tables/edit.png"></a>
+                                <a title="Delete" data-toggle="modal" data-target="#delete-children-modal"><img src="static/images/Tables/delete.png"></a>
                             </td>
                         </tr>
                     </tbody>
@@ -76,33 +66,33 @@
     </div>
     
 
-    <!-- Add Student Modal -->
-    <div id="add-student-modal" class="modal fade" role="dialog">
+    <!-- Add Children Modal -->
+    <div id="add-children-modal" class="modal fade" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form>
                     <div class="modal-header">
-                        <h3 class="modal-title">Add New Student</h3>
+                        <h3 class="modal-title">Add New Children</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Student Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Student Name">
+                            <label>Children Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Children Name">
                         </div>
                         <div class="form-group">
-                            <label>Student Last Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Student Last Name">
+                            <label>Children Last Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Children Last Name">
                         </div>
                         <div class="form-group">
-                            <label>Student Age</label>
-                            <input type="text" class="form-control" placeholder="Enter Student Age">
+                            <label>Children Age</label>
+                            <input type="text" class="form-control" placeholder="Enter Children Age">
                         </div>
                         <div class="form-group">
-                            <label>Student Parent</label>
-                            <input type="text" class="form-control" placeholder="Enter Student Parent">
+                            <label>Parent Telephone</label>
+                            <input type="text" class="form-control" placeholder="Enter Parent Telephone">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -113,13 +103,13 @@
             </div>
         </div>
     </div>
-    <!-- Delete Student Modal -->
-    <div id="delete-student-modal" class="modal fade" role="dialog">
+    <!-- Delete Children Modal -->
+    <div id="delete-children-modal" class="modal fade" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form>
                     <div class="modal-header">
-                        <h3 class="modal-title">Delete Student</h3>
+                        <h3 class="modal-title">Delete Children</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -136,38 +126,38 @@
             </div>
         </div>
     </div>
-    <!--Edit Student Modal-->
-    <div id="edit-student-modal" class="modal fade" role="dialog">
+    <!--Edit Children Modal-->
+    <div id="edit-children-modal" class="modal fade" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form>
                     <div class="modal-header">
-                        <h3 class="modal-title">Edit Student</h3>
+                        <h3 class="modal-title">Edit Children</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Student Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Student Name">
+                            <label>Children Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Children Name">
                         </div>
                         <div class="form-group">
-                            <label>Student Last Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Student Last Name">
+                            <label>Children Last Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Children Last Name">
                         </div>
                         <div class="form-group">
-                            <label>Student Age</label>
-                            <input type="text" class="form-control" placeholder="Enter Student Age">
+                            <label>Children Age</label>
+                            <input type="text" class="form-control" placeholder="Enter Children Age">
                         </div>
                         <div class="form-group">
-                            <label>Student Parent</label>
-                            <input type="text" class="form-control" placeholder="Enter Student Parent">
+                            <label>Parent Telephone</label>
+                            <input type="text" class="form-control" placeholder="Enter Parent Telephone">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Edit Student</button>
+                        <button type="submit" class="btn btn-primary">Edit Children</button>
                     </div>
                 </form>
             </div>

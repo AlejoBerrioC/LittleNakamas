@@ -18,7 +18,7 @@
                     <button type="submit"><img src="static/images/Index/search.png" alt=""></button>
                 </div>
                 <div class="user">
-                    <a href="#" class="btn">Add New</a>
+                    <a href="Parents.jsp" class="btn">Add New Children</a>
                     <img src="static/images/Index/notifications.png" alt="">
                     <div class="img-case">
                         <img src="static/images/Index/user.png" alt="">
@@ -31,7 +31,7 @@
                 <div class="card">
                     <div class="box">
                         <h1>2194</h1>
-                        <h3>Students</h3>
+                        <h3>Childrens</h3>
                     </div>
                     <div class="icon-case">
                         <img src="static/images/Index/students.png" alt="">
@@ -48,78 +48,19 @@
                 </div>
                 <div class="card">
                     <div class="box">
-                        <h1>5</h1>
+                        <h1>1</h1>
                         <h3>Schools</h3>
                     </div>
                     <div class="icon-case">
                         <img src="static/images/Index/schools.png" alt="">
                     </div>
                 </div>
-                <div class="card">
-                    <div class="box">
-                        <h1>350000</h1>
-                        <h3>Income</h3>
-                    </div>
-                    <div class="icon-case">
-                        <img src="static/images/Index/income.png" alt="">
-                    </div>
-                </div>
             </div>
             <div class="content-2">
-                <div class="recent-payments">
-                    <div class="title">
-                        <h2>Recent Payments</h2>
-                        <a href="#" class="btn">View All</a>
-                    </div>
-                    <table>
-                        <tr>
-                            <th>Name</th>
-                            <th>School</th>
-                            <th>Amount</th>
-                            <th>Option</th>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>St. James College</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>St. James College</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>St. James College</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>St. James College</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>St. James College</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>St. James College</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">View</a></td>
-                        </tr>
-                    </table>
-                </div>
                 <div class="new-students">
                     <div class="title">
-                        <h2>New Students</h2>
-                        <a href="#" class="btn">View All</a>
+                        <h2>New Childrens</h2>
+                        <a href="Childrens.jsp" class="btn">View All</a>
                     </div>
                     <table>
                         <tr>

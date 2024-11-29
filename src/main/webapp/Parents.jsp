@@ -26,7 +26,6 @@
             <div class="table-content">
                 <table>
                     <thead>
-                        <th></th>
                         <th>ID</th>
                         <th>Name</th>
                         <th>Last Name</th>
@@ -35,12 +34,6 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
-                                <span class="checkbox">
-                                    <input type="checkbox" id="checkbox1">
-                                    <label for="checkbox1"></label>
-                                </span>
-                            </td>
                             <td>1</td>
                             <td>John</td>
                             <td>Doe</td>
@@ -51,12 +44,6 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <span class="checkbox">
-                                    <input type="checkbox" id="checkbox2">
-                                    <label for="checkbox2"></label>
-                                </span>
-                            </td>
                             <td>2</td>
                             <td>Juan</td>
                             <td>Berrio</td>
@@ -67,12 +54,6 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <span class="checkbox">
-                                    <input type="checkbox" id="checkbox3">
-                                    <label for="checkbox3"></label>
-                                </span>
-                            </td>
                             <td>3</td>
                             <td>Juan David</td>
                             <td>Berrio</td>

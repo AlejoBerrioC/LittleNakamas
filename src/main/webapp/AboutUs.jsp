@@ -13,7 +13,7 @@
       <div class="luffy">
         <div class="luffy-image">
           <img src="static/images/Login-Aboutus/luffy.png" alt="luffy" width="50%" />
-          <h2>Jean-Noël Cadieux</h2>
+          <h2>Jean-Noel Cadieux</h2>
           <h3>Project Manager/Developer Fullstack</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam metus
             eros, mattis a nulla sit amet, tempus pharetra magna. Maecenas quis

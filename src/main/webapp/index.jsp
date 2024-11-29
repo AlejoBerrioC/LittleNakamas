@@ -46,7 +46,11 @@
                         <img src="static/images/Index/aboutus.png" alt="">&nbsp;About Us 
                     </a>
                 </li>
-                <li><img src="static/images/Index/settings.png" alt="">&nbsp;Settings </li>
+                <li>
+                    <a href="Settings.jsp" target="contentFrame">
+                        <img src="static/images/Index/settings.png" alt="">&nbsp;Settings
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
