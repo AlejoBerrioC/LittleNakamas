@@ -33,7 +33,7 @@
             <div class="cards">
                 <div class="card">
                     <div class="box">
-                        <h1><c:out value="${}"/></h1>
+                        <h1><c:out value="${enfants.size()}" /></h1>
                         <h3>Childrens</h3>
                     </div>
                     <div class="icon-case">
@@ -42,7 +42,7 @@
                 </div>
                 <div class="card">
                     <div class="box">
-                        <h1>53</h1>
+                        <h1><c:out value="${nbEmploye}" /></h1>
                         <h3>Teachers</h3>
                     </div>
                     <div class="icon-case">

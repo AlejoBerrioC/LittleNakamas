@@ -18,14 +18,12 @@ public class EmployeDAO {
                 "VALUES (?, ?, 'Educatrice', ?, ?)";
 
         try {
-            System.out.println("Test print");
             pst = conn.getConn().prepareStatement(query);
             pst.setString(1, newTeacher.nomEmp);
             pst.setString(2, newTeacher.preEmp);
             pst.setString(3, newTeacher.getDiplome());
             pst.setInt(4, newTeacher.getNbEnfant());
             pst.executeUpdate();
-            System.out.println("Teacher ajouter");
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
