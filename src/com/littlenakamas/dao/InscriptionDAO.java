@@ -11,7 +11,7 @@ public class InscriptionDAO {
     PreparedStatement pst;
     ResultSet rs;
 
-    public void addNewInscDate(Enfant enfant, Employe employe){
+    public void addNewInscDate(Enfant enfant, Employe employe) {
         String query = "INSERT INTO Inscription (Numenf, Numemp)" +
                 "VALUES (?, ?)";
 
@@ -23,5 +23,11 @@ public class InscriptionDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public Date getDate() {
+        String query = "SELECT ";
+
+        return null;
     }
 }

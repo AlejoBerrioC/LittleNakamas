@@ -1,6 +1,7 @@
 package com.littlenakamas.dao;
 
 import com.littlenakamas.bean.Educatrice;
+import com.littlenakamas.bean.Employe;
 import com.littlenakamas.bean.PersonnelAdministratif;
 import com.littlenakamas.util.DbConnection;
 
@@ -12,13 +13,13 @@ public class EmployeDAO {
     PreparedStatement pst;
     ResultSet rs;
 
-    public void addTeacher(Educatrice newTeacher){
+    public void addTeacher(Educatrice newTeacher) {
         String query = "INSERT INTO Employe (Nomemp, Preemp, Typeemp, Diplome, Nbenfant)" +
                 "VALUES (?, ?, 'Educatrice', ?, ?)";
 
         try {
             pst = conn.getConn().prepareStatement(query);
-            pst.setString(1,newTeacher.nomEmp);
+            pst.setString(1, newTeacher.nomEmp);
             pst.setString(2, newTeacher.preEmp);
             pst.setString(3, newTeacher.getDiplome());
             pst.setInt(4, newTeacher.getNbEnfant());
@@ -28,7 +29,7 @@ public class EmployeDAO {
         }
     }
 
-    public void addAdministratif(PersonnelAdministratif newAdminis){
+    public void addAdministratif(PersonnelAdministratif newAdminis) {
         String query = "INSERT INTO Employe (Nomemp, Preemp, Typeemp, Numtel, Emailprof)" +
                 "VALUES (?, ?, 'PersonnelAdministratif', ?, ?)";
 
@@ -44,7 +45,7 @@ public class EmployeDAO {
         }
     }
 
-    public void deleteEmploye(int numEmp){
+    public void deleteEmploye(int numEmp) {
         String query = "DELETE FROM Employe WHERE Numemp = ?";
 
         try {
@@ -56,7 +57,7 @@ public class EmployeDAO {
         }
     }
 
-    public void updateTeacher(Educatrice teacher, int numEmp){
+    public void updateTeacher(Educatrice teacher, int numEmp) {
         String query = "UPDATE Employe SET Nomemp = ?, Preemp = ?, Diplome = ?, Nbenfant = ? WHERE Numemp = ?";
 
         try {
@@ -72,7 +73,7 @@ public class EmployeDAO {
         }
     }
 
-    public void updateAdminis(PersonnelAdministratif adminis, int numEmp){
+    public void updateAdminis(PersonnelAdministratif adminis, int numEmp) {
         String query = "UPDATE Employe SET Nomemp = ?, Preemp = ?, Numtel = ?, Emailprof = ? WHERE Numemp = ?";
 
         try {
@@ -86,5 +87,61 @@ public class EmployeDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ArrayList<Employe> getEmployes() {
+        String query = "SELECT Numemp, Nomemp, Preemp, Typeemp FROM Employe";
+        ArrayList<Employe> employes = new ArrayList<>();
+        try {
+            pst = conn.getConn().prepareStatement(query);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                Employe employe = new Employe(rs.getInt("Numemp"),
+                        rs.getString("Nomemp"), rs.getString("Preemp"));
+                employes.add(employe);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return employes;
+    }
+
+    public ArrayList<Educatrice> getTeachers() {
+        String query = "SELECT Numemp, Nomemp, Preemp, Diplome, Nbenfant FROM Employe WHERE Typeemp = 'Educatrice'";
+        ArrayList<Educatrice> teachers = new ArrayList<>();
+
+        try {
+            pst = conn.getConn().prepareStatement(query);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                Educatrice educatrice = new Educatrice(rs.getInt("Numemp"), rs.getString("Nomemp"),
+                        rs.getString("Preemp"), rs.getString("Diplome"),
+                        rs.getInt("Nbenfant"));
+                teachers.add(educatrice);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return teachers;
+    }
+
+    public ArrayList<PersonnelAdministratif> getAdminis() {
+        String query = "SELECT Numemp, Nomemp, Preemp, Numtel, Emailprof FROM Employe WHERE Typeemp = 'PersonnelAdministratif'";
+        ArrayList<PersonnelAdministratif> administratifs = new ArrayList<>();
+
+        try {
+            pst = conn.getConn().prepareStatement(query);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                PersonnelAdministratif administratif = new PersonnelAdministratif(rs.getInt("Numemp"), rs.getString("Nomemp"),
+                        rs.getString("Preemp"), rs.getString("Numtel"),
+                        rs.getString("Emailprof"));
+                administratifs.add(administratif);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return administratifs;
     }
 }

@@ -27,7 +27,7 @@ public class ParentDAO {
         }
     }
 
-    public void deleteParent(String numTel){
+    public void deleteParent(String numTel) {
         String query = "DELETE FROM Parent WHERE Numtel = ?";
 
         try {
@@ -39,7 +39,7 @@ public class ParentDAO {
         }
     }
 
-    public void updateParent(Parent parent, String numTel){
+    public void updateParent(Parent parent, String numTel) {
         String query = "UPDATE Parent SET Numtel = ?, Nompar = ?, Prepar = ? WHERE Numtel = ?";
 
         try {
@@ -52,5 +52,25 @@ public class ParentDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ArrayList<Parent> getParents() {
+        String query = "SELECT * FROM Parent";
+        ArrayList<Parent> parents = new ArrayList<>();
+
+        try {
+            pst = conn.getConn().prepareStatement(query);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                Parent parent = new Parent(rs.getString("Numtel"), rs.getString("Nompar"),
+                        rs.getString("Prepar"));
+                parents.add(parent);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        return parents;
     }
 }

@@ -1,6 +1,6 @@
 package com.littlenakamas.bean;
 
-public class Enfant implements Affectation{
+public class Enfant implements Affectation {
     public int numEnf;
     public String nomEnf;
     public String prenEnf;
@@ -25,13 +25,11 @@ public class Enfant implements Affectation{
 
     @Override
     public String affectedSection(int age) {
-        if (age <= 2){
+        if (age <= 2) {
             return "";
-        }
-        else if (age <= 4) {
+        } else if (age <= 4) {
             return "";
-        }
-        else if (age <= 6) {
+        } else if (age <= 6) {
             return "";
         } else {
             return "";

@@ -11,7 +11,7 @@ public class EnfantDAO {
     PreparedStatement pst;
     ResultSet rs;
 
-    public void addEnfant(Enfant newEnfant){
+    public void addEnfant(Enfant newEnfant) {
         String query = "INSERT INTO Enfant (Nomenf, Prenenf, Ageenf, Numtelparent)" +
                 "VALUES (?, ?, ?, ?)";
 
@@ -19,7 +19,7 @@ public class EnfantDAO {
             pst = conn.getConn().prepareStatement(query);
             pst.setString(1, newEnfant.nomEnf);
             pst.setString(2, newEnfant.prenEnf);
-            pst.setInt(3,newEnfant.ageEnf);
+            pst.setInt(3, newEnfant.ageEnf);
             pst.setString(4, newEnfant.getParentEnf().numTel);
             pst.executeUpdate();
         } catch (SQLException e) {
@@ -27,7 +27,7 @@ public class EnfantDAO {
         }
     }
 
-    public void deleteEnfant(int numEnf){
+    public void deleteEnfant(int numEnf) {
         String query = "DELETE FROM Enfant WHERE numEnf = ?";
 
         try {
@@ -39,7 +39,7 @@ public class EnfantDAO {
         }
     }
 
-    public void updateEnfant(Enfant enfant, int numEnf){
+    public void updateEnfant(Enfant enfant, int numEnf) {
         String query = "UPDATE Enfant SET Nomenf = ?, Preenf = ?, Ageenf = ?, Numtelparent = ? WHERE Numenf = ?";
 
         try {
@@ -48,10 +48,27 @@ public class EnfantDAO {
             pst.setString(2, enfant.prenEnf);
             pst.setInt(3, enfant.ageEnf);
             pst.setString(4, enfant.getParentEnf().numTel);
-            pst.setInt(5,numEnf);
+            pst.setInt(5, numEnf);
             pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ArrayList<Enfant> getChildrens() {
+        String query = "SELECT Numenf, Nomenf, Preenf, Ageenf, Numtelparent FROM Enfant";
+        ArrayList<Enfant> enfants = new ArrayList<>();
+
+        try {
+            pst = conn.getConn().prepareStatement(query);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return null;
     }
 }

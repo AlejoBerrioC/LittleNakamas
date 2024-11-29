@@ -1,6 +1,6 @@
 package com.littlenakamas.bean;
 
-public class Educatrice extends Employe{
+public class Educatrice extends Employe {
     private String diplome;
     private int nbEnfant;
 
