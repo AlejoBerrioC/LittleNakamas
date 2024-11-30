@@ -83,7 +83,7 @@
                         </div>
                         <div class="form-group">
                             <label>Children Age</label>
-                            <input type="text" name="enfant-age" class="form-control" placeholder="Enter Children Age">
+                            <input type="number" name="enfant-age" class="form-control" placeholder="Enter Children Age">
                         </div>
                         <div class="form-group">
                             <label>Parent Telephone</label>
