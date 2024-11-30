@@ -65,7 +65,7 @@
     <div id="add-children-modal" class="modal fade" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form>
+                <form method="post" action="enfant">
                     <div class="modal-header">
                         <h3 class="modal-title">Add New Children</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -75,19 +75,19 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Children Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Children Name">
+                            <input type="text" name="enfant-name" class="form-control" placeholder="Enter Children Name">
                         </div>
                         <div class="form-group">
                             <label>Children Last Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Children Last Name">
+                            <input type="text" name="enfant-lastname" class="form-control" placeholder="Enter Children Last Name">
                         </div>
                         <div class="form-group">
                             <label>Children Age</label>
-                            <input type="text" class="form-control" placeholder="Enter Children Age">
+                            <input type="text" name="enfant-age" class="form-control" placeholder="Enter Children Age">
                         </div>
                         <div class="form-group">
                             <label>Parent Telephone</label>
-                            <input type="text" class="form-control" placeholder="Enter Parent Telephone">
+                            <input type="text" name="parent-number" class="form-control" placeholder="Enter Parent Telephone">
                         </div>
                     </div>
                     <div class="modal-footer">

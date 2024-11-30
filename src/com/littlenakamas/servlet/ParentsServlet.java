@@ -25,5 +25,6 @@ public class ParentsServlet extends HttpServlet {
         String number = req.getParameter("parent-number");
 
         new ParentDAO().addParent(new Parent(number, lastname, name));
+        resp.sendRedirect("enfant");
     }
 }
