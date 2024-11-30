@@ -11,7 +11,7 @@ public class EnfantDAO {
     PreparedStatement pst;
     ResultSet rs;
 
-    public void addEnfant(Enfant newEnfant) {
+    public void addEnfant(Enfant newEnfant, int numEmp) {
         String query = "INSERT INTO Enfant (Nomenf, Prenenf, Ageenf, Numtelparent)" +
                 "VALUES (?, ?, ?, ?)";
 
@@ -22,6 +22,9 @@ public class EnfantDAO {
             pst.setInt(3, newEnfant.ageEnf);
             pst.setString(4, newEnfant.getParentEnf().numTel);
             pst.executeUpdate();
+
+            // Une fois l'enfant ajouter un ajoute son inscription
+            new InscriptionDAO().addNewInscDate(newEnfant, EmployeDAO.getEmployeByNumEmp(numEmp));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
