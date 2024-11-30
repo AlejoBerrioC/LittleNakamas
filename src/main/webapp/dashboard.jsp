@@ -63,35 +63,21 @@
                 <div class="new-students">
                     <div class="title">
                         <h2>New Childrens</h2>
-                        <a href="Childrens.jsp" class="btn">View All</a>
+                        <a href="childrens.jsp" class="btn">View All</a>
                     </div>
                     <table>
                         <tr>
                             <th>Profile</th>
                             <th>Name</th>
-                            <th>option</th>
+                            <th>Parent Telephone</th>
                         </tr>
-                        <tr>
-                            <td><img src="static/images/Index/user.png" alt=""></td>
-                            <td>John Steve Doe</td>
-                            <td><img src="static/images/Index/info.png" alt=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src="static/images/Index/user.png" alt=""></td>
-                            <td>John Steve Doe</td>
-                            <td><img src="static/images/Index/info.png" alt=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src="static/images/Index/user.png" alt=""></td>
-                            <td>John Steve Doe</td>
-                            <td><img src="static/images/Index/info.png" alt=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src="static/images/Index/user.png" alt=""></td>
-                            <td>John Steve Doe</td>
-                            <td><img src="static/images/Index/info.png" alt=""></td>
-                        </tr>
-
+                        <c:forEach var = "enfant" items = "${enfants}">
+                            <tr>
+                                <td><img src="static/images/Index/user.png" alt=""></td>
+                                <td><c:out value="${enfant.nomEnf}" /></td>
+                                <td><c:out value="${enfant.getParentEnf().numTel}" /></td>
+                            </tr>
+                        </c:forEach>
                     </table>
                 </div>
             </div>

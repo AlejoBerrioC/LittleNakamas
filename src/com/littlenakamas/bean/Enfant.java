@@ -19,6 +19,38 @@ public class Enfant implements Affectation {
         return parentEnf;
     }
 
+    public int getNumEnf() {
+        return numEnf;
+    }
+
+    public void setNumEnf(int numEnf) {
+        this.numEnf = numEnf;
+    }
+
+    public String getNomEnf() {
+        return nomEnf;
+    }
+
+    public void setNomEnf(String nomEnf) {
+        this.nomEnf = nomEnf;
+    }
+
+    public String getPrenEnf() {
+        return prenEnf;
+    }
+
+    public void setPrenEnf(String prenEnf) {
+        this.prenEnf = prenEnf;
+    }
+
+    public int getAgeEnf() {
+        return ageEnf;
+    }
+
+    public void setAgeEnf(int ageEnf) {
+        this.ageEnf = ageEnf;
+    }
+
     public void setParentEnf(Parent parentEnf) {
         this.parentEnf = parentEnf;
     }

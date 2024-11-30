@@ -10,4 +10,28 @@ public class Parent {
         this.nomPar = nomPar;
         this.prePar = prePar;
     }
+
+    public String getNumTel() {
+        return numTel;
+    }
+
+    public void setNumTel(String numTel) {
+        this.numTel = numTel;
+    }
+
+    public String getNomPar() {
+        return nomPar;
+    }
+
+    public void setNomPar(String nomPar) {
+        this.nomPar = nomPar;
+    }
+
+    public String getPrePar() {
+        return prePar;
+    }
+
+    public void setPrePar(String prePar) {
+        this.prePar = prePar;
+    }
 }

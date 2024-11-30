@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class DashboardServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Envoit des données nécessaire pour affichage de dashboard
-        req.setAttribute("test", "test2");
         req.setAttribute("enfants", new EnfantDAO().getChildrens());
         req.setAttribute("nbEmploye", new EmployeDAO().getEmployes().size());
 

@@ -22,7 +22,7 @@
         <div class="side-menu-items">
             <ul>
                 <li>
-                    <a href="dashboard.jsp" target="contentFrame">
+                    <a href="dashboard" target="contentFrame">
                         <img src="static/images/Index/dashboard (2).png" alt="">&nbsp;Dashboard
                     </a>
                 </li>

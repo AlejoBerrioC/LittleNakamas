@@ -30,4 +30,20 @@ public class Garderie {
     public void setListEnf(ArrayList<Enfant> listEnf) {
         this.listEnf = listEnf;
     }
+
+    public String getNomGuard() {
+        return nomGuard;
+    }
+
+    public void setNomGuard(String nomGuard) {
+        this.nomGuard = nomGuard;
+    }
+
+    public int getCapGuard() {
+        return capGuard;
+    }
+
+    public void setCapGuard(int capGuard) {
+        this.capGuard = capGuard;
+    }
 }
