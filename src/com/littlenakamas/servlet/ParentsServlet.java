@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/parents")
-public class parentsServlet extends HttpServlet {
+public class ParentsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         this.getServletContext().getRequestDispatcher("/parents.jsp").forward(req, resp);

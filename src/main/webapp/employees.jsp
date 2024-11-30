@@ -32,28 +32,19 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Last Name</th>
-                    <th>Type</th>
                     <th>Actions</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>Administrator</td>
-                            <td>
-                                <a title="Delete" data-toggle="modal" data-target="#delete-employee-modal"><img src="static/images/Tables/delete.png"></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Juan</td>
-                            <td>Berrio</td>
-                            <td>Teacher</td>
-                            <td>
-                                <a title="Delete" data-toggle="modal" data-target="#delete-employee-modal"><img src="static/images/Tables/delete.png"></a>
-                            </td>
-                        </tr>
+                        <c:forEach var="employe" items="${employes}" />
+                            <tr>
+                                <td>1</td>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>
+                                    <a title="Delete" data-toggle="modal" data-target="#delete-employee-modal"><img src="static/images/Tables/delete.png"></a>
+                                </td>
+                            </tr>
+                        </cforEach>
                     </tbody>
                 </table>
             </div>
