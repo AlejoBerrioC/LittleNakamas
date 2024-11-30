@@ -31,13 +31,13 @@
                         <img src="static/images/Index/reading-book (1).png" alt="">&nbsp;Childrens
                     </a>
                 </li>               
-                <li class="dropdown"><a href="employees.jsp" target="contentFrame"><img src="static/images/Index/employees.png" alt="">&nbsp;Employees</a>
+                <li class="dropdown"><a href="employees" target="contentFrame"><img src="static/images/Index/employees.png" alt="">&nbsp;Employees</a>
                     <ul class="dropdown-content">
-                        <li><a href="teachers.jsp" target="contentFrame"><img src="static/images/Index/teacher.png" alt="">&nbsp;Teachers</a></li>
-                        <li><a href="admins.jsp" target="contentFrame"><img src="static/images/Index/admins.png" alt="">&nbsp;Admins</a></li>
+                        <li><a href="teachers" target="contentFrame"><img src="static/images/Index/teacher.png" alt="">&nbsp;Teachers</a></li>
+                        <li><a href="admins" target="contentFrame"><img src="static/images/Index/admins.png" alt="">&nbsp;Admins</a></li>
                     </ul>
                 </li>
-                <li><a href="parents.jsp" target="contentFrame">
+                <li><a href="parents" target="contentFrame">
                         <img src="static/images/Index/parent.png" alt="">&nbsp;Parents
                     </a> 
                 </li>

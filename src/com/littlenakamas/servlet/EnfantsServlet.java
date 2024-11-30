@@ -22,7 +22,6 @@ public class EnfantsServlet extends HttpServlet {
         for (Enfant enfant : enfants){
             Inscription inscription = new InscriptionDAO().getInscriptionByNumEnf(enfant.numEnf);
             inscriptions.add(inscription);
-            System.out.println(inscription.getDateInscription());
         }
         req.setAttribute("enfants", enfants);
         req.setAttribute("dates", inscriptions);

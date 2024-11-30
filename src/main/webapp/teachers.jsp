@@ -37,7 +37,7 @@
                     <th>Actions</th>
                     </thead>
                     <tbody>
-                        <c:forEach var="teacher" items="${teachers}"/>
+                        <c:forEach var="teacher" items="${teachers}" >
                             <tr>
                                 <td><c:out value="${teacher.numEmp}"/></td>
                                 <td><c:out value="${teacher.preEmp}"/></td>

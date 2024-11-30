@@ -37,28 +37,19 @@
                     <th>Actions</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Jean</td>
-                            <td>Treamblay</td>
-                            <td>(514) 123-4567</td>
-                            <td>test@test</td>
-                            <td>
-                                <a title="Edit" data-toggle="modal" data-target="#edit-admins-modal"><img src="static/images/Tables/edit.png"></a>
-                                <a title="Delete" data-toggle="modal" data-target="#delete-admins-modal"><img src="static/images/Tables/delete.png"></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Juan</td>
-                            <td>Berrio</td>
-                            <td>(514) 123-4567</td>
-                            <td>test@test</td>
-                            <td>
-                                <a title="Edit" data-toggle="modal" data-target="#edit-admins-modal"><img src="static/images/Tables/edit.png"></a>
-                                <a title="Delete" data-toggle="modal" data-target="#delete-admins-modal"><img src="static/images/Tables/delete.png"></a>
-                            </td>
-                        </tr>
+                        <c:forEach var="admin" items="${admins}">
+                            <tr>
+                                <td><c:out value="${admin.numEmp}"/></td>
+                                <td><c:out value="${admin.preEmp}"/></td>
+                                <td><c:out value="${admin.nomEmp}"/></td>
+                                <td><c:out value="${admin.numTel}"/></td>
+                                <td><c:out value="${admin.emailProf}"/></td>
+                                <td>
+                                    <a title="Edit" data-toggle="modal" data-target="#edit-admins-modal"><img src="static/images/Tables/edit.png"></a>
+                                    <a title="Delete" data-toggle="modal" data-target="#delete-admins-modal"><img src="static/images/Tables/delete.png"></a>
+                                </td>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>
