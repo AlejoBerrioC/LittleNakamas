@@ -25,8 +25,11 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         Employe employe = empD.getEmployeByLogin(name, lastName, password);
+        System.out.println("Name: " + employe.nomEmp + "Lastname: " + employe.preEmp +
+                "Id: " + employe.numEmp);
         if (employe != null) {
             req.setAttribute("employee_id", employe.numEmp);
+            System.out.println(employe.numEmp);
             this.getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);
         } else {
             this.getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
