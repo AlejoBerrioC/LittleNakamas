@@ -37,14 +37,14 @@
                     <tbody>
                         <c:forEach var="employe" items="${employes}" />
                             <tr>
-                                <td>1</td>
-                                <td>John</td>
-                                <td>Doe</td>
+                                <td><c:out value="${employe.numEmp}"/></td>
+                                <td><c:out value="${employe.preEmp}"/></td>
+                                <td><c:out value="${employe.nomEmp}"/></td>
                                 <td>
                                     <a title="Delete" data-toggle="modal" data-target="#delete-employee-modal"><img src="static/images/Tables/delete.png"></a>
                                 </td>
                             </tr>
-                        </cforEach>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>
