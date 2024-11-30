@@ -1,5 +1,6 @@
 package com.littlenakamas.servlet;
 
+import com.littlenakamas.bean.PersonnelAdministratif;
 import com.littlenakamas.dao.EmployeDAO;
 
 import javax.servlet.ServletException;
@@ -15,5 +16,16 @@ public class AdminsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("admins", new EmployeDAO().getAdminis());
         this.getServletContext().getRequestDispatcher("/admins.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("admin-name");
+        String lastname = req.getParameter("admin-lastname");
+        String numberTelephone = req.getParameter("admin-number");
+        String email = req.getParameter("admin-email");
+
+        new EmployeDAO().addAdministratif(new PersonnelAdministratif(0,lastname,name,numberTelephone,email));
+        resp.sendRedirect("admins");
     }
 }

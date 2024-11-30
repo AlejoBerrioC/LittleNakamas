@@ -61,7 +61,7 @@
     <div id="add-admins-modal" class="modal fade" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form>
+                <form method="post" action="admins">
                     <div class="modal-header">
                         <h3 class="modal-title">Add New Administrator</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -71,19 +71,19 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Administrator Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Administrator Name">
+                            <input type="text" name="admin-name" class="form-control" placeholder="Enter Administrator Name">
                         </div>
                         <div class="form-group">
                             <label>Administrator Last Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Administrator Last Name">
+                            <input type="text" name="admin-lastname" class="form-control" placeholder="Enter Administrator Last Name">
                         </div>
                         <div class="form-group">
                             <label>Administrator Phone Number</label>
-                            <input type="text" class="form-control" placeholder="Enter Administrator Phone Number">
+                            <input type="text" name="admin-number" class="form-control" placeholder="Enter Administrator Phone Number">
                         </div>
                         <div class="form-group">
                             <label>Administrator Email</label>
-                            <input type="text" class="form-control" placeholder="Enter Administrator Email">
+                            <input type="text" name="admin-email" class="form-control" placeholder="Enter Administrator Email">
                         </div>
                     </div>
                     <div class="modal-footer">
