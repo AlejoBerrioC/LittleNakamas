@@ -95,4 +95,27 @@ public class EnfantDAO {
         }
         return enfant;
     }
+
+    public ArrayList<Enfant> getChildrensBySearch(String search) {
+        String query = "SELECT Numenf, Nomenf, Prenenf, Ageenf, Numtelparent FROM Enfant" +
+                " WHERE Nomenf LIKE '?%' OR Prenenf LIKE '?%'";
+        ArrayList<Enfant> enfants = new ArrayList<>();
+
+        try {
+            pst = conn.getConn().prepareStatement(query);
+            pst.setString(1, search);
+            pst.setString(2, search);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                Enfant enfant = new Enfant(rs.getInt("Numenf"), rs.getString("Nomenf"),
+                        rs.getString("Prenenf"), rs.getInt("Ageenf"), ParentDAO.getParenByTel(rs.getString("Numtelparent")));
+                enfants.add(enfant);
+                System.out.println(enfant.nomEnf);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return enfants;
+    }
 }
