@@ -36,15 +36,15 @@
                     <th>Actions</th>
                     </thead>
                     <tbody>
-                        <c:forEach var = "enfant" items="${enfants}">
+                        <c:for var = "i" begin="0" end="${enfants.size()}">
                             <tr>
-                                <td><c:out value="${enfant.numEnf}" /></td>
-                                <td><c:out value="${enfant.prenEnf}" /></td>
-                                <td><c:out value="${enfant.nomEnf}" /></td>
-                                <td><c:out value="${enfant.ageEnf}" /></td>
-                                <td><c:out value="${enfant.parentEnf.nomPar} + ${enfant.parentEnf.prePar}" /></td>
+                                <td><c:out value="${enfants[i].numEnf}" /></td>
+                                <td><c:out value="${enfant[i].prenEnf}" /></td>
+                                <td><c:out value="${enfant[i].nomEnf}" /></td>
+                                <td><c:out value="${enfant[i].ageEnf}" /></td>
+                                <td><c:out value="${enfant[i].parentEnf.nomPar} + ${enfant[i].parentEnf.prePar}" /></td>
+                                <td><c:out value="${dates[i].dateInscription}" /></td>
                                 <td><c:out value="${enfant.affectedSection(enfant.ageEnf)}" /></td>
-                                <td>2024-11-28</td>
                                 <td>
                                     <a title="Edit" data-toggle="modal" data-target="#edit-children-modal"><img src="static/images/Tables/edit.png"></a>
                                     <a title="Delete" data-toggle="modal" data-target="#delete-children-modal"><img src="static/images/Tables/delete.png"></a>

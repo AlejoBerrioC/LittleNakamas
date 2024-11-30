@@ -7,7 +7,7 @@ public class Inscription {
     private Enfant enfant;
     private Employe employe;
 
-    public Inscription(Date dateInscription, Enfant enfant, Employe employe) {
+    public Inscription(Date dateInscription, Enfant enfant) {
         this.dateInscription = dateInscription;
         this.enfant = enfant;
         this.employe = employe;

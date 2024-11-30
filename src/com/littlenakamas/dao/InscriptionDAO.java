@@ -26,18 +26,16 @@ public class InscriptionDAO {
         }
     }
 
-    public Inscription getDate(int numEnf, int numEmp) {
-        String query = "SELECT * FROM Inscription WHERE Numenf = ? AND Numemp = ?";
+    public Inscription getInscriptionByNumEnf(int numEnf) {
+        String query = "SELECT * FROM Inscription WHERE Numenf = ?";
         Inscription inscription = null;
 
         try {
             pst = conn.getConn().prepareStatement(query);
             pst.setInt(1, numEnf);
-            pst.setInt(2, numEmp);
             rs = pst.executeQuery();
             if (rs.next()) {
-                inscription = new Inscription(rs.getDate("Dateinscription"), EnfantDAO.getChildrenByNum(rs.getInt("Numenf")),
-                        EmployeDAO.getEmployeByNumEmp(rs.getInt("Numemp")));
+                inscription = new Inscription(rs.getDate("Dateinscription"), EnfantDAO.getChildrenByNum(rs.getInt("Numenf")));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

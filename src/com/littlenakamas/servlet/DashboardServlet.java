@@ -17,9 +17,7 @@ import java.util.ArrayList;
 public class DashboardServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Envoit des données nécessaire pour affichage de dashboard
-        if (req.getAttribute("enfants") == null) {
-            req.setAttribute("enfants", new EnfantDAO().getChildrens());
-        }
+        req.setAttribute("enfants", new EnfantDAO().getChildrens());
         req.setAttribute("nbEmploye", new EmployeDAO().getEmployes().size());
 
         this.getServletContext().getRequestDispatcher("/dashboard.jsp").forward(req, resp);
@@ -28,5 +26,7 @@ public class DashboardServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("enfants", new EnfantDAO().getChildrensBySearch(req.getParameter("search")));
+        req.setAttribute("nbEmploye", new EmployeDAO().getEmployes().size());
+        this.getServletContext().getRequestDispatcher("/dashboard.jsp").forward(req, resp);
     }
 }
