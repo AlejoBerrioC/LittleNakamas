@@ -65,7 +65,7 @@
                 <div class="new-students">
                     <div class="title">
                         <h2>New Childrens</h2>
-                        <a href="enfant" class="btn">View All</a>
+                        <a href="dashboard" class="btn">View All</a>
                     </div>
                     <table>
                         <tr>
