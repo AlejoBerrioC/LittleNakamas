@@ -29,43 +29,23 @@
             <div class="table-content">
                 <table>
                     <thead>
-                        <th>ID</th>
                         <th>Name</th>
                         <th>Last Name</th>
                         <th>Phone Number</th>
                         <th>Actions</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>(514) 123-4567</td>
-                            <td>
-                                <a title="Edit" data-toggle="modal" data-target="#edit-parent-modal"><img src="static/images/Tables/edit.png"></a>
-                                <a title="Delete" data-toggle="modal" data-target="#delete-parent-modal"><img src="static/images/Tables/delete.png"></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Juan</td>
-                            <td>Berrio</td>
-                            <td>(514) 123-4567</td>
-                            <td>
-                                <a title="Edit" data-toggle="modal" data-target="#edit-parent-modal"><img src="static/images/Tables/edit.png"></a>
-                                <a title="Delete" data-toggle="modal" data-target="#delete-parent-modal"><img src="static/images/Tables/delete.png"></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Juan David</td>
-                            <td>Berrio</td>
-                            <td>(514) 123-4567</td>
-                            <td>
-                                <a title="Edit" data-toggle="modal" data-target="#edit-parent-modal"><img src="static/images/Tables/edit.png"></a>
-                                <a title="Delete" data-toggle="modal" data-target="#delete-parent-modal"><img src="static/images/Tables/delete.png"></a>
-                            </td>
-                        </tr>
+                        <c:forEach var="parent" items="${parents}">
+                            <tr>
+                                <td><c:out value="${parent.prePar}"/></td>
+                                <td><c:out value="${parent.nomPar}"/></td>
+                                <td><c:out value="${parent.numTel}"/></td>
+                                <td>
+                                    <a title="Edit" data-toggle="modal" data-target="#edit-parent-modal"><img src="static/images/Tables/edit.png"></a>
+                                    <a title="Delete" data-toggle="modal" data-target="#delete-parent-modal"><img src="static/images/Tables/delete.png"></a>
+                                </td>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>
