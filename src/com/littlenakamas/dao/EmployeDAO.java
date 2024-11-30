@@ -167,9 +167,6 @@ public class EmployeDAO {
     }
 
     public Employe getEmployeByLogin(String name, String lastname, String password) {
-        DbConnection conn = new DbConnection();
-        PreparedStatement pst;
-        ResultSet rs;
         String query = "SELECT * FROM Employe WHERE NOMEMP = ? AND PREEMP = ? AND PASSWORD = ?";
         Employe employe = null;
         try {

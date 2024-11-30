@@ -20,9 +20,11 @@ public class EnfantsServlet extends HttpServlet {
         ArrayList<Enfant> enfants = new EnfantDAO().getChildrens();
         ArrayList<Inscription> inscriptions = new ArrayList<>();
         for (Enfant enfant : enfants){
-            inscriptions.add(new InscriptionDAO().getInscriptionByNumEnf(enfant.numEnf));
+            Inscription inscription = new InscriptionDAO().getInscriptionByNumEnf(enfant.numEnf);
+            inscriptions.add(inscription);
+            System.out.println(inscription.getDateInscription());
         }
-        req.setAttribute("enfants", new EnfantDAO().getChildrens());
+        req.setAttribute("enfants", enfants);
         req.setAttribute("dates", inscriptions);
 
         this.getServletContext().getRequestDispatcher("/childrens.jsp").forward(req, resp);

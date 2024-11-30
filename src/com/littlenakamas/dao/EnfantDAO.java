@@ -87,7 +87,7 @@ public class EnfantDAO {
             rs = pst.executeQuery();
             if (rs.next()) {
                 enfant = new Enfant(rs.getInt("Numenf"), rs.getString("Nomenf"),
-                        rs.getString("Prenenf"), rs.getInt("Ageeng"), ParentDAO.getParenByTel(rs.getString("Numtelparent")));
+                        rs.getString("Prenenf"), rs.getInt("Ageenf"), ParentDAO.getParenByTel(rs.getString("Numtelparent")));
             }
 
         } catch (SQLException e) {

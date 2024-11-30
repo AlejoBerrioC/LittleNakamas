@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html lang="en">
 
 <head>
@@ -36,14 +39,14 @@
                     <th>Actions</th>
                     </thead>
                     <tbody>
-                        <c:for var = "i" begin="0" end="${enfants.size()}">
+                        <c:forEach var = "enfant" items="${enfants}" varStatus="status">
                             <tr>
-                                <td><c:out value="${enfants[i].numEnf}" /></td>
-                                <td><c:out value="${enfant[i].prenEnf}" /></td>
-                                <td><c:out value="${enfant[i].nomEnf}" /></td>
-                                <td><c:out value="${enfant[i].ageEnf}" /></td>
-                                <td><c:out value="${enfant[i].parentEnf.nomPar} + ${enfant[i].parentEnf.prePar}" /></td>
-                                <td><c:out value="${dates[i].dateInscription}" /></td>
+                                <td><c:out value="${enfant.numEnf}" /></td>
+                                <td><c:out value="${enfant.prenEnf}" /></td>
+                                <td><c:out value="${enfant.nomEnf}" /></td>
+                                <td><c:out value="${enfant.ageEnf}" /></td>
+                                <td><c:out value="${enfant.parentEnf.nomPar} ${enfant.parentEnf.prePar}" /></td>
+                                <td><c:out value="${dates[status.index].dateInscription}" /></td>
                                 <td><c:out value="${enfant.affectedSection(enfant.ageEnf)}" /></td>
                                 <td>
                                     <a title="Edit" data-toggle="modal" data-target="#edit-children-modal"><img src="static/images/Tables/edit.png"></a>

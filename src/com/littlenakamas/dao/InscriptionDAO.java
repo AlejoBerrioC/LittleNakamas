@@ -35,7 +35,8 @@ public class InscriptionDAO {
             pst.setInt(1, numEnf);
             rs = pst.executeQuery();
             if (rs.next()) {
-                inscription = new Inscription(rs.getDate("Dateinscription"), EnfantDAO.getChildrenByNum(rs.getInt("Numenf")));
+                inscription = new Inscription(rs.getDate("DATEINSCRIPTION"), EnfantDAO.getChildrenByNum(rs.getInt("Numenf")),
+                        EmployeDAO.getEmployeByNumEmp(rs.getInt("Numemp")));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
