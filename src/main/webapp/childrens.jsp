@@ -32,33 +32,25 @@
                     <th>Age</th>
                     <th>Parent</th>
                     <th>Date Inscription</th>
+                    <th>Section</th>
                     <th>Actions</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>2</td>
-                            <td>John Doe</td>
-                            <td>2024-11-28</td>
-                            <td>
-                                <a title="Edit" data-toggle="modal" data-target="#edit-children-modal"><img src="static/images/Tables/edit.png"></a>
-                                <a title="Delete" data-toggle="modal" data-target="#delete-children-modal"><img src="static/images/Tables/delete.png"></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Juan</td>
-                            <td>Berrio</td>
-                            <td>3</td>
-                            <td>Liliana Castaneda</td>
-                            <td>2024-11-28</td>
-                            <td>
-                                <a title="Edit" data-toggle="modal" data-target="#edit-children-modal"><img src="static/images/Tables/edit.png"></a>
-                                <a title="Delete" data-toggle="modal" data-target="#delete-children-modal"><img src="static/images/Tables/delete.png"></a>
-                            </td>
-                        </tr>
+                        <c:forEach var = "enfant" items="${enfants}">
+                            <tr>
+                                <td><c:out value="${enfant.numEnf}" /></td>
+                                <td><c:out value="${enfant.prenEnf}" /></td>
+                                <td><c:out value="${enfant.nomEnf}" /></td>
+                                <td><c:out value="${enfant.ageEnf}" /></td>
+                                <td><c:out value="${enfant.parentEnf.nomPar} + ${enfant.parentEnf.prePar}" /></td>
+                                <td><c:out value="${enfant.affectedSection(enfant.ageEnf)}" /></td>
+                                <td>2024-11-28</td>
+                                <td>
+                                    <a title="Edit" data-toggle="modal" data-target="#edit-children-modal"><img src="static/images/Tables/edit.png"></a>
+                                    <a title="Delete" data-toggle="modal" data-target="#delete-children-modal"><img src="static/images/Tables/delete.png"></a>
+                                </td>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>

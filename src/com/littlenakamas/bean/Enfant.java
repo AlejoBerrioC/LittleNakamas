@@ -58,13 +58,13 @@ public class Enfant implements Affectation {
     @Override
     public String affectedSection(int age) {
         if (age <= 2) {
-            return "";
+            return "Poupon";
         } else if (age <= 4) {
-            return "";
+            return "Petite Section";
         } else if (age <= 6) {
-            return "";
+            return "Moyenne Section";
         } else {
-            return "";
+            return "Préscolaire";
         }
     }
 }

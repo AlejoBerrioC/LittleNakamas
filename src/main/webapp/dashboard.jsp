@@ -68,14 +68,16 @@
                     <table>
                         <tr>
                             <th>Profile</th>
-                            <th>Name</th>
+                            <th>Children Lastname</th>
                             <th>Parent Telephone</th>
+                            <th>Childre Section</th>
                         </tr>
                         <c:forEach var = "enfant" items = "${enfants}">
                             <tr>
                                 <td><img src="static/images/Index/user.png" alt=""></td>
                                 <td><c:out value="${enfant.nomEnf}" /></td>
-                                <td><c:out value="${enfant.getParentEnf().numTel}" /></td>
+                                <td><c:out value="${enfant.parentEnf.numTel}" /></td>
+                                <td><c:out value="${enfant.affectedSection(enfant.ageEnf)}" /></td>
                             </tr>
                         </c:forEach>
                     </table>
