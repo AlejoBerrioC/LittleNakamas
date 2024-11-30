@@ -37,28 +37,19 @@
                     <th>Actions</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Jean</td>
-                            <td>Treamblay</td>
-                            <td>DEC</td>
-                            <td>15</td>
-                            <td>
-                                <a title="Edit" data-toggle="modal" data-target="#edit-teacher-modal"><img src="static/images/Tables/edit.png"></a>
-                                <a title="Delete" data-toggle="modal" data-target="#delete-teacher-modal"><img src="static/images/Tables/delete.png"></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Juan</td>
-                            <td>Berrio</td>
-                            <td>AEC</td>
-                            <td>20</td>
-                            <td>
-                                <a title="Edit" data-toggle="modal" data-target="#edit-teacher-modal"><img src="static/images/Tables/edit.png"></a>
-                                <a title="Delete" data-toggle="modal" data-target="#delete-teacher-modal"><img src="static/images/Tables/delete.png"></a>
-                            </td>
-                        </tr>
+                        <c:forEach var="teacher" items="${teachers}"/>
+                            <tr>
+                                <td><c:out value="${teacher.numEmp}"/></td>
+                                <td><c:out value="${teacher.preEmp}"/></td>
+                                <td><c:out value="${teacher.nomEmp}"/></td>
+                                <td><c:out value="${teacher.diplome}"/></td>
+                                <td><c:out value="${teacher.nbEnfant}"/></td>
+                                <td>
+                                    <a title="Edit" data-toggle="modal" data-target="#edit-teacher-modal"><img src="static/images/Tables/edit.png"></a>
+                                    <a title="Delete" data-toggle="modal" data-target="#delete-teacher-modal"><img src="static/images/Tables/delete.png"></a>
+                                </td>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>
