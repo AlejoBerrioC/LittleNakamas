@@ -38,7 +38,10 @@ public class EnfantsServlet extends HttpServlet {
         int age = Integer.parseInt(req.getParameter("enfant-age"));
         String parentNumber = req.getParameter("parent-number");
 
-        new EnfantDAO().addEnfant(new Enfant(0, name, lastname, age, ParentDAO.getParenByTel(parentNumber)));
+        int numEmp = (int) req.getAttribute("employee_id");
+
+        new EnfantDAO().addEnfant(new Enfant(0, name, lastname, age, ParentDAO.getParenByTel(parentNumber)),
+                numEmp);
         resp.sendRedirect("enfant");
     }
 }

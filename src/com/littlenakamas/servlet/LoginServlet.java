@@ -26,6 +26,7 @@ public class LoginServlet extends HttpServlet {
 
         Employe employe = empD.getEmployeByLogin(name, lastName, password);
         if (employe != null) {
+            req.setAttribute("employee_id", EmployeDAO.getEmployeByNumEmp(employe.numEmp));
             this.getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);
         } else {
             this.getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
