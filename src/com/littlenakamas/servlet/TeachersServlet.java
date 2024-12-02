@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet({"/teachers", "/teachersDelete"})
+@WebServlet({"/teachers", "/teachersDelete", "/teachersEdit"})
 public class TeachersServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,12 +31,25 @@ public class TeachersServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("educ-name");
-        String lastname = req.getParameter("educ-lastname");
-        String diploma = req.getParameter("educ-diploma");
-        int nbChildrens = Integer.parseInt(req.getParameter("educ-numchildrens"));
+        String url = req.getServletPath();
 
-        new EmployeDAO().addTeacher(new Educatrice(0, lastname, name, diploma, nbChildrens));
-        resp.sendRedirect("teachers");
+        switch (url) {
+            case "/teachers":
+                String name = req.getParameter("educ-name");
+                String lastname = req.getParameter("educ-lastname");
+                String diploma = req.getParameter("educ-diploma");
+                int nbChildrens = Integer.parseInt(req.getParameter("educ-numchildrens"));
+
+                new EmployeDAO().addTeacher(new Educatrice(0, lastname, name, diploma, nbChildrens));
+                resp.sendRedirect("teachers");
+                break;
+            case "/teachersEdit":
+                new EmployeDAO().updateTeacher(new Educatrice(Integer.parseInt(req.getParameter("teacher-old-number")),
+                        req.getParameter("teacher-new-name"), req.getParameter("teacher-new-lastname"), req.getParameter("teacher-new-diplome"),
+                        Integer.parseInt(req.getParameter("teacher-new-nbenfant"))), Integer.parseInt(req.getParameter("teacher-old-number")));
+                resp.sendRedirect("teachers");
+        }
+
+
     }
 }

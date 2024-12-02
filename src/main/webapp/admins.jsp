@@ -44,7 +44,14 @@
                                 <td><c:out value="${admin.numTel}"/></td>
                                 <td><c:out value="${admin.emailProf}"/></td>
                                 <td>
-                                    <a title="Edit" data-toggle="modal" data-target="#edit-admins-modal"><img src="static/images/Tables/edit.png"></a>
+                                    <a title="Edit" data-toggle="modal" data-target="#edit-admins-modal"
+                                    data-admin-number="${admin.numEmp}"
+                                    data-admin-name="${admin.preEmp}"
+                                    data-admin-lastname="${admin.nomEmp}"
+                                    data-admin-telephone="${admin.numTel}"
+                                    data-admin-email="${admin.emailProf}">
+                                        <img src="static/images/Tables/edit.png">
+                                    </a>
                                     <a title="Delete" data-toggle="modal" data-target="#delete-admins-modal" data-admin-number="${admin.numEmp}"><img src="static/images/Tables/delete.png"></a>
                                 </td>
                             </tr>
@@ -121,7 +128,7 @@
     <div id="edit-admins-modal" class="modal fade" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form method="get" action="adminsDelete" id="delete-admins-form">
+                <form method="post" action="adminsEdit" id="edit-admin-form">
                     <div class="modal-header">
                         <h3 class="modal-title">Edit Administrator</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -129,21 +136,22 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                    <input type="hidden" name="admin-old-number" id="modal-admin-old-number"/>
                         <div class="form-group">
                             <label>Administrator Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Teacher Name">
+                            <input type="text" name="admin-new-name" class="form-control" id="modal-admin-new-name">
                         </div>
                         <div class="form-group">
                             <label>Administrator Last Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Teacher Last Name">
+                            <input type="text" name="admin-new-lastname" class="form-control" id="modal-admin-new-lastname">
                         </div>
                         <div class="form-group">
                             <label>Administrator Phone Number</label>
-                            <input type="text" class="form-control" placeholder="Enter Administrator Phone Number">
+                            <input type="text" name="admin-new-telephone" class="form-control" id="modal-admin-new-telephone">
                         </div>
                         <div class="form-group">
                             <label>Administrator Email</label>
-                            <input type="text" class="form-control" placeholder="Enter Administrator Email">
+                            <input type="text" name="admin-new-email" class="form-control" id="modal-admin-new-email">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -156,10 +164,26 @@
     </div>
     <script>
         $(document).on('click', '[data-target="#delete-admins-modal"]', function () {
-                var adminNumEmp = $(this).data('admin-number');
+            var adminNumEmp = $(this).data('admin-number');
 
-                $('#modal-admin-number').val(adminNumEmp);
-            });
+            $('#modal-admin-number').val(adminNumEmp);
+        });
+
+        $(document).on('click', '[data-target="#edit-admins-modal"]', function () {
+            var adminNumEmp = $(this).data('admin-number');
+            var adminPren = $(this).data('admin-name');
+            var adminNom = $(this).data('admin-lastname');
+            var adminTelephone = $(this).data('admin-telephone');
+            var adminEmail = $(this).data('admin-email');
+
+            $('#modal-admin-old-number').val(adminNumEmp);
+            $('#modal-admin-new-number').val(adminNumEmp);
+            $('#modal-admin-new-name').val(adminPren);
+            $('#modal-admin-new-lastname').val(adminNom);
+            $('#modal-admin-new-telephone').val(adminTelephone);
+            $('#modal-admin-new-email').val(adminEmail);
+
+        });
     </script>
 </body>
 </html>

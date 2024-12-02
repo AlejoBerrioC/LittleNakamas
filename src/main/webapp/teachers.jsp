@@ -44,7 +44,14 @@
                                 <td><c:out value="${teacher.diplome}"/></td>
                                 <td><c:out value="${teacher.nbEnfant}"/></td>
                                 <td>
-                                    <a title="Edit" data-toggle="modal" data-target="#edit-teacher-modal"><img src="static/images/Tables/edit.png"></a>
+                                    <a title="Edit" data-toggle="modal" data-target="#edit-teacher-modal"
+                                    data-teacher-number="${teacher.numEmp}"
+                                    data-teacher-name="${teacher.preEmp}"
+                                    data-teacher-lastname="${teacher.nomEmp}"
+                                    data-teacher-diplome="${teacher.diplome}"
+                                    data-teacher-nbEnfant="${teacher.nbEnfant}">
+                                        <img src="static/images/Tables/edit.png">
+                                    </a>
                                     <a title="Delete" data-toggle="modal" data-target="#delete-teacher-modal" data-teacher-number="${teacher.numEmp}"><img src="static/images/Tables/delete.png"></a>
                                 </td>
                             </tr>
@@ -121,7 +128,7 @@
     <div id="edit-teacher-modal" class="modal fade" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form>
+                <form method="post" action="teachersEdit" id="edit-teacher-form">
                     <div class="modal-header">
                         <h3 class="modal-title">Edit Teacher</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -129,21 +136,22 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                    <input type="hidden" name="teacher-old-number" id="modal-teacher-old-number"/>
                         <div class="form-group">
                             <label>Teacher Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Teacher Name">
+                            <input type="text" name="teacher-new-name" class="form-control" id="modal-teacher-new-name">
                         </div>
                         <div class="form-group">
                             <label>Teacher Last Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Teacher Last Name">
+                            <input type="text" name="teacher-new-lastname" class="form-control" id="modal-teacher-new-lastname">
                         </div>
                         <div class="form-group">
                             <label>Teacher Diploma</label>
-                            <input type="text" class="form-control" placeholder="Enter Teacher Diploma">
+                            <input type="text" name="teacher-new-diplome" class="form-control" id="modal-teacher-new-diplome">
                         </div>
                         <div class="form-group">
                             <label>Number Students</label>
-                            <input type="text" class="form-control" placeholder="Enter Number Students">
+                            <input type="number" name="teacher-new-nbenfant" class="form-control" id="modal-teacher-new-nbenfant">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -156,10 +164,25 @@
     </div>
     <script>
         $(document).on('click', '[data-target="#delete-teacher-modal"]', function () {
-                var teacherNumEmp = $(this).data('teacher-number');
+            var teacherNumEmp = $(this).data('teacher-number');
 
-                $('#modal-teacher-number').val(teacherNumEmp);
-            });
+            $('#modal-teacher-number').val(teacherNumEmp);
+        });
+
+        $(document).on('click', '[data-target="#edit-teacher-modal"]', function () {
+            var teacherNumEmp = $(this).data('teacher-number');
+            var teacherPren = $(this).data('teacher-name');
+            var teacherNom = $(this).data('teacher-lastname');
+            var teacherDiplome = $(this).data('teacher-diplome');
+            var teacherNbEnfant = $(this).data('teacher-nbenfant');
+
+            $('#modal-teacher-old-number').val(teacherNumEmp);
+            $('#modal-teacher-new-number').val(teacherNumEmp);
+            $('#modal-teacher-new-name').val(teacherPren);
+            $('#modal-teacher-new-lastname').val(teacherNom);
+            $('#modal-teacher-new-diplome').val(teacherDiplome);
+            $('#modal-teacher-new-nbenfant').val(teacherNbEnfant);
+        });
     </script>
 </body>
 </html>
