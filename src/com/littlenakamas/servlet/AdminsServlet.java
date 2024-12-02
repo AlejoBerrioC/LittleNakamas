@@ -25,6 +25,8 @@ public class AdminsServlet extends HttpServlet {
                 new EmployeDAO().deleteEmploye(Integer.parseInt(req.getParameter("admin-number")));
                 resp.sendRedirect("admins");
                 break;
+            default:
+                break;
         }
 
 
@@ -49,6 +51,9 @@ public class AdminsServlet extends HttpServlet {
                         req.getParameter("admin-new-name"), req.getParameter("admin-new-lastname"), req.getParameter("admin-new-telephone"),
                         req.getParameter("admin-new-email")), Integer.parseInt(req.getParameter("admin-old-number")));
                 resp.sendRedirect("admins");
+                break;
+            default:
+                break;
         }
 
     }
