@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet({"/enfant", "/enfantDelete"})
+@WebServlet({"/enfant", "/enfantDelete", "/enfantEdit"})
 public class EnfantsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -44,16 +44,28 @@ public class EnfantsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("enfant-name");
-        String lastname = req.getParameter("enfant-lastname");
-        int age = Integer.parseInt(req.getParameter("enfant-age"));
-        String parentNumber = req.getParameter("parent-number");
+        String url = req.getServletPath();
 
-        HttpSession session = req.getSession();
-        int numEmp = (int) session.getAttribute("employe_id");
+        switch (url) {
+            case "/enfant":
+                String name = req.getParameter("enfant-name");
+                String lastname = req.getParameter("enfant-lastname");
+                int age = Integer.parseInt(req.getParameter("enfant-age"));
+                String parentNumber = req.getParameter("parent-number");
 
-        new EnfantDAO().addEnfant(new Enfant(0, name, lastname, age, ParentDAO.getParenByTel(parentNumber)),
-                numEmp);
-        resp.sendRedirect("enfant");
+                HttpSession session = req.getSession();
+                int numEmp = (int) session.getAttribute("employe_id");
+
+                new EnfantDAO().addEnfant(new Enfant(0, name, lastname, age, ParentDAO.getParenByTel(parentNumber)),
+                        numEmp);
+                resp.sendRedirect("enfant");
+            case "/enfantEdit":
+                new EnfantDAO().updateEnfant(new Enfant(Integer.parseInt(req.getParameter("children-old-number")),
+                        req.getParameter("children-new-name"), req.getParameter("children-new-lastname"), Integer.parseInt(req.getParameter("children-new-age")),
+                        ParentDAO.getParenByTel(req.getParameter("children-new-parent"))), Integer.parseInt(req.getParameter("children-old-number")));
+                resp.sendRedirect("enfant");
+        }
+
+
     }
 }

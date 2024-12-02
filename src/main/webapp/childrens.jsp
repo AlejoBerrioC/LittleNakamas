@@ -48,7 +48,14 @@
                                 <td><c:out value="${dates[status.index].dateInscription}" /></td>
                                 <td><c:out value="${enfant.affectedSection(enfant.ageEnf)}" /></td>
                                 <td>
-                                    <a title="Edit" data-toggle="modal" data-target="#edit-children-modal"><img src="static/images/Tables/edit.png"></a>
+                                    <a title="Edit" data-toggle="modal" data-target="#edit-children-modal"
+                                    data-children-number="${enfant.numEnf}"
+                                    data-children-name="${enfant.prenEnf}"
+                                    data-children-lastname="${enfant.nomEnf}"
+                                    data-children-age="${enfant.ageEnf}"
+                                    data-children-parent="${enfant.parentEnf.numTel}" >
+                                        <img src="static/images/Tables/edit.png">
+                                    </a>
                                     <a title="Delete" data-toggle="modal" data-target="#delete-children-modal" data-children-number="${enfant.numEnf}"><img src="static/images/Tables/delete.png"></a>
                                 </td>
                             </tr>
@@ -125,7 +132,7 @@
     <div id="edit-children-modal" class="modal fade" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form>
+                <form method="post" action="enfantEdit" id="edit-enfant-form">
                     <div class="modal-header">
                         <h3 class="modal-title">Edit Children</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -133,21 +140,22 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                    <input type="hidden" name="children-old-number" id="modal-children-old-number"/>
                         <div class="form-group">
                             <label>Children Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Children Name">
+                            <input type="text" name="children-new-name" class="form-control" id="modal-children-new-name">
                         </div>
                         <div class="form-group">
                             <label>Children Last Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Children Last Name">
+                            <input type="text" name="children-new-lastname" class="form-control" id="modal-children-new-lastname">
                         </div>
                         <div class="form-group">
                             <label>Children Age</label>
-                            <input type="text" class="form-control" placeholder="Enter Children Age">
+                            <input type="number" name="children-new-age" class="form-control" id="modal-children-new-age">
                         </div>
                         <div class="form-group">
                             <label>Parent Telephone</label>
-                            <input type="text" class="form-control" placeholder="Enter Parent Telephone">
+                            <input type="text" name="children-new-parent" class="form-control" id="modal-children-new-parent">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -160,10 +168,24 @@
     </div>
     <script>
         $(document).on('click', '[data-target="#delete-children-modal"]', function () {
-                var childrenNum = $(this).data('children-number');
+            var childrenNum = $(this).data('children-number');
 
-                $('#modal-children-number').val(childrenNum);
-            });
+            $('#modal-children-number').val(childrenNum);
+        });
+
+        $(document).on('click', '[data-target="#edit-children-modal"]', function () {
+            var childrenNum = $(this).data('children-number');
+            var childrenPre = $(this).data('children-name');
+            var childrenNom = $(this).data('children-lastname');
+            var childrenAge = $(this).data('children-age');
+            var childrenParent = $(this).data('children-parent');
+
+            $('#modal-children-old-number').val(childrenNum);
+            $('#modal-children-new-name').val(childrenPre);
+            $('#modal-children-new-lastname').val(childrenNom);
+            $('#modal-children-new-age').val(childrenAge);
+            $('#modal-children-new-parent').val(childrenParent);
+        });
     </script>
 </body>
 </html>
