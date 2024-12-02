@@ -23,7 +23,6 @@
                 </div>
                 <div class="add-delete-boutons">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-admins-modal"><img src="static/images/Tables/add.png"><span>Add New Administrator</span></button>
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#delete-admins-modal"><img src="static/images/Tables/deleteT.png"><span>Delete</span></button>
                 </div>
             </div>
             <div class="table-content">
@@ -46,7 +45,7 @@
                                 <td><c:out value="${admin.emailProf}"/></td>
                                 <td>
                                     <a title="Edit" data-toggle="modal" data-target="#edit-admins-modal"><img src="static/images/Tables/edit.png"></a>
-                                    <a title="Delete" data-toggle="modal" data-target="#delete-admins-modal"><img src="static/images/Tables/delete.png"></a>
+                                    <a title="Delete" data-toggle="modal" data-target="#delete-admins-modal" data-admin-number="${admin.numEmp}"><img src="static/images/Tables/delete.png"></a>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -98,7 +97,7 @@
     <div id="delete-admins-modal" class="modal fade" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form>
+                <form method="get" action="adminsDelete" id="delete-admin-form">
                     <div class="modal-header">
                         <h3 class="modal-title">Delete Administrator</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -108,6 +107,7 @@
                     <div class="modal-body">
                         <p>Are you sure you want to delete these records?</p>
                         <p class="text-warning"><small>This action cannot be undone.</small></p>
+                        <input type="hidden" name="admin-number" id="modal-admin-number"/>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -121,7 +121,7 @@
     <div id="edit-admins-modal" class="modal fade" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form>
+                <form method="get" action="adminsDelete" id="delete-admins-form">
                     <div class="modal-header">
                         <h3 class="modal-title">Edit Administrator</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -154,5 +154,12 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).on('click', '[data-target="#delete-admins-modal"]', function () {
+                var adminNumEmp = $(this).data('admin-number');
+
+                $('#modal-admin-number').val(adminNumEmp);
+            });
+    </script>
 </body>
 </html>

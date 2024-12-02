@@ -69,7 +69,6 @@ public class EnfantDAO {
                 Enfant enfant = new Enfant(rs.getInt("Numenf"), rs.getString("Nomenf"),
                         rs.getString("Prenenf"), rs.getInt("Ageenf"), ParentDAO.getParenByTel(rs.getString("Numtelparent")));
                 enfants.add(enfant);
-                System.out.println(enfant.nomEnf);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

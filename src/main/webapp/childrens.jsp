@@ -23,7 +23,6 @@
                 </div>
                 <div class="add-delete-boutons">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-children-modal"><img src="static/images/Tables/add.png"><span>Add New Children</span></button>
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#delete-children-modal"><img src="static/images/Tables/deleteT.png"><span>Delete</span></button>
                 </div>
             </div>
             <div class="table-content">
@@ -50,7 +49,7 @@
                                 <td><c:out value="${enfant.affectedSection(enfant.ageEnf)}" /></td>
                                 <td>
                                     <a title="Edit" data-toggle="modal" data-target="#edit-children-modal"><img src="static/images/Tables/edit.png"></a>
-                                    <a title="Delete" data-toggle="modal" data-target="#delete-children-modal"><img src="static/images/Tables/delete.png"></a>
+                                    <a title="Delete" data-toggle="modal" data-target="#delete-children-modal" data-children-number="${enfant.numEnf}"><img src="static/images/Tables/delete.png"></a>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -102,7 +101,7 @@
     <div id="delete-children-modal" class="modal fade" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form>
+                <form method="get" action="enfantDelete" id="delete-children-form">
                     <div class="modal-header">
                         <h3 class="modal-title">Delete Children</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -112,6 +111,7 @@
                     <div class="modal-body">
                         <p>Are you sure you want to delete these records?</p>
                         <p class="text-warning"><small>This action cannot be undone.</small></p>
+                        <input type="hidden" name="children-number" id="modal-children-number"/>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -158,5 +158,12 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).on('click', '[data-target="#delete-children-modal"]', function () {
+                var childrenNum = $(this).data('children-number');
+
+                $('#modal-children-number').val(childrenNum);
+            });
+    </script>
 </body>
 </html>

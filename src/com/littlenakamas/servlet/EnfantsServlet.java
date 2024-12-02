@@ -15,20 +15,30 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/enfant")
+@WebServlet({"/enfant", "/enfantDelete"})
 public class EnfantsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ArrayList<Enfant> enfants = new EnfantDAO().getChildrens();
-        ArrayList<Inscription> inscriptions = new ArrayList<>();
-        for (Enfant enfant : enfants){
-            Inscription inscription = new InscriptionDAO().getInscriptionByNumEnf(enfant.numEnf);
-            inscriptions.add(inscription);
-        }
-        req.setAttribute("enfants", enfants);
-        req.setAttribute("dates", inscriptions);
+        String url = req.getServletPath();
 
-        this.getServletContext().getRequestDispatcher("/childrens.jsp").forward(req, resp);
+        switch (url) {
+            case "/enfant":
+                ArrayList<Enfant> enfants = new EnfantDAO().getChildrens();
+                ArrayList<Inscription> inscriptions = new ArrayList<>();
+                for (Enfant enfant : enfants) {
+                    Inscription inscription = new InscriptionDAO().getInscriptionByNumEnf(enfant.numEnf);
+                    inscriptions.add(inscription);
+                }
+                req.setAttribute("enfants", enfants);
+                req.setAttribute("dates", inscriptions);
+
+                this.getServletContext().getRequestDispatcher("/childrens.jsp").forward(req, resp);
+                break;
+            case "/enfantDelete":
+                new EnfantDAO().deleteEnfant(Integer.parseInt(req.getParameter("children-number")));
+                resp.sendRedirect("enfant");
+        }
+
     }
 
     @Override

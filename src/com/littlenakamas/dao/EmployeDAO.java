@@ -178,7 +178,6 @@ public class EmployeDAO {
             if (rs.next()) {
                 employe = new Employe(rs.getInt("Numemp"), rs.getString("Nomemp"),
                         rs.getString("Preemp"));
-                System.out.println("Name: " + employe.nomEmp);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
