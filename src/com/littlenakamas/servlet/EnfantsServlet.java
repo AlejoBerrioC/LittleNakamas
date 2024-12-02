@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -48,7 +49,8 @@ public class EnfantsServlet extends HttpServlet {
         int age = Integer.parseInt(req.getParameter("enfant-age"));
         String parentNumber = req.getParameter("parent-number");
 
-        int numEmp = (int) req.getAttribute("employee_id");
+        HttpSession session = req.getSession();
+        int numEmp = (int) session.getAttribute("employe_id");
 
         new EnfantDAO().addEnfant(new Enfant(0, name, lastname, age, ParentDAO.getParenByTel(parentNumber)),
                 numEmp);

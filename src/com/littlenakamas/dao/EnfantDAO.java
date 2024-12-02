@@ -16,7 +16,7 @@ public class EnfantDAO {
                 "VALUES (?, ?, ?, ?)";
 
         try {
-            pst = conn.getConn().prepareStatement(query);
+            pst = conn.getConn().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             pst.setString(1, newEnfant.nomEnf);
             pst.setString(2, newEnfant.prenEnf);
             pst.setInt(3, newEnfant.ageEnf);
@@ -24,7 +24,8 @@ public class EnfantDAO {
             pst.executeUpdate();
 
             // Une fois l'enfant ajouter un ajoute son inscription
-            new InscriptionDAO().addNewInscDate(newEnfant, EmployeDAO.getEmployeByNumEmp(numEmp));
+            new InscriptionDAO().addNewInscDate(new EnfantDAO().getChildrensByFullName(newEnfant.nomEnf, newEnfant.prenEnf),
+                    EmployeDAO.getEmployeByNumEmp(numEmp));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -118,5 +119,25 @@ public class EnfantDAO {
         }
 
         return enfants;
+    }
+
+    public Enfant getChildrensByFullName(String name, String lastname) {
+        String query = "SELECT Numenf, Nomenf, Prenenf, Ageenf, Numtelparent FROM Enfant" +
+                " WHERE Nomenf LIKE ? AND Prenenf LIKE ?";
+        Enfant enfant = null;
+        try {
+            pst = conn.getConn().prepareStatement(query);
+            pst.setString(1, name);
+            pst.setString(2, lastname);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                enfant = new Enfant(rs.getInt("Numenf"), rs.getString("Nomenf"),
+                        rs.getString("Prenenf"), rs.getInt("Ageenf"), ParentDAO.getParenByTel(rs.getString("Numtelparent")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return enfant;
     }
 }
