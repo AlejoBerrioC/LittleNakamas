@@ -12,6 +12,10 @@ import java.util.*;
 public class EmployeDAO {
     ResultSet rs;
 
+    /**
+     * Add a teacher to the database
+     * @param newTeacher Educatrice Object that will be added to the database
+     * */
     public void addTeacher(Educatrice newTeacher) {
         String query = "INSERT INTO Employe (Nomemp, Preemp, Typeemp, Diplome, Nbenfant)" +
                 "VALUES (?, ?, 'Educatrice', ?, ?)";
@@ -30,6 +34,10 @@ public class EmployeDAO {
         }
     }
 
+    /**
+     * Add an administrator to the database
+     * @param newAdminis The PersonnelAdministratif Object that will be added to the database
+     * */
     public void addAdministratif(PersonnelAdministratif newAdminis) {
         String query = "INSERT INTO Employe (Nomemp, Preemp, Typeemp, Numtel, Emailprof)" +
                 "VALUES (?, ?, 'PersonnelAdministratif', ?, ?)";
@@ -47,6 +55,10 @@ public class EmployeDAO {
         }
     }
 
+    /**
+     * Delete the selected Employe from the database
+     * @param numEmp Le numero de l'employe à supprimer.
+     * */
     public void deleteEmploye(int numEmp) {
         String query = "DELETE FROM Employe WHERE Numemp = ?";
 
@@ -60,6 +72,11 @@ public class EmployeDAO {
         }
     }
 
+    /**
+     * Update un teacher dans la database avec des nouvelles données
+     * @param teacher Eductrice Object qui va update l'ancien Educatrice qui était sauvegarder
+     * @param numEmp Le numero de teacher que nous voulons modifier dans la base de donnée.
+     * */
     public void updateTeacher(Educatrice teacher, int numEmp) {
         String query = "UPDATE Employe SET Nomemp = ?, Preemp = ?, Diplome = ?, Nbenfant = ? WHERE Numemp = ?";
 
@@ -77,6 +94,11 @@ public class EmployeDAO {
         }
     }
 
+    /**
+     * Update un administrator dans la database avec des nouvelles données
+     * @param adminis PersonnelAdministratif Object qui va update l'ancien PersonnelAdministratif qui était sauvegarder
+     * @param numEmp Le numero de administrator que nous voulons modifier dans la base de donnée.
+     * */
     public void updateAdminis(PersonnelAdministratif adminis, int numEmp) {
         String query = "UPDATE Employe SET Nomemp = ?, Preemp = ?, Numtel = ?, Emailprof = ? WHERE Numemp = ?";
 
