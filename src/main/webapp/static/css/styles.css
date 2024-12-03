@@ -58,6 +58,25 @@ a {
     background-color: #023459;
 }
 
+.search-box{
+    display: flex !important;
+    align-items: center !important;
+}
+
+.search-input {
+    padding: 5px !important;
+    flex: 1 !important;
+    margin-right: 5px;
+}
+
+.search-button {
+    margin-left: 5px !important;
+    padding: 5px !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+
 /* Css Existant */
 * {
     margin: 0;

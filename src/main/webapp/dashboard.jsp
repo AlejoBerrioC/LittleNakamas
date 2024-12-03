@@ -17,9 +17,9 @@
         <div class="header">
             <div class="nav">
                 <div class="search">
-                <form action="dashboard" method="post">
-                    <input type="text" name="search" placeholder="Search..">
-                    <button type="submit"><img src="static/images/Index/search.png" alt=""></button>
+                <form action="dashboard" method="post" class="search-box">
+                    <input type="text" name="search" class="search-input" placeholder="Search..">
+                    <button type="submit" class="search-button"><img src="static/images/Index/search.png" alt=""></button>
                 </form>
                 </div>
                 <div class="user">
