@@ -8,16 +8,15 @@ import java.sql.*;
 import java.util.*;
 
 public class ParentDAO {
-    DbConnection conn = new DbConnection();
-    PreparedStatement pst;
     ResultSet rs;
 
     public void addParent(Parent newParent) {
         String query = "INSERT INTO Parent (numTel, nomPar, prePar)" +
                 "VALUES (?, ?, ?)";
 
-        try {
-            pst = conn.getConn().prepareStatement(query);
+        try (Connection conn = new DbConnection().getConn();
+             PreparedStatement pst = conn.prepareStatement(query))
+        {
             pst.setString(1, newParent.numTel);
             pst.setString(2, newParent.nomPar);
             pst.setString(3, newParent.prePar);
@@ -30,8 +29,9 @@ public class ParentDAO {
     public void deleteParent(String numTel) {
         String query = "DELETE FROM Parent WHERE Numtel = ?";
 
-        try {
-            pst = conn.getConn().prepareStatement(query);
+        try (Connection conn = new DbConnection().getConn();
+             PreparedStatement pst = conn.prepareStatement(query))
+        {
             pst.setString(1, numTel);
             pst.executeUpdate();
         } catch (SQLException e) {
@@ -42,8 +42,9 @@ public class ParentDAO {
     public void updateParent(Parent parent, String numTel) {
         String query = "UPDATE Parent SET Numtel = ?, Nompar = ?, Prepar = ? WHERE Numtel = ?";
 
-        try {
-            pst = conn.getConn().prepareStatement(query);
+        try (Connection conn = new DbConnection().getConn();
+             PreparedStatement pst = conn.prepareStatement(query))
+        {
             pst.setString(1, parent.numTel);
             pst.setString(2, parent.nomPar);
             pst.setString(3, parent.prePar);
@@ -58,14 +59,16 @@ public class ParentDAO {
         String query = "SELECT * FROM Parent";
         ArrayList<Parent> parents = new ArrayList<>();
 
-        try {
-            pst = conn.getConn().prepareStatement(query);
+        try (Connection conn = new DbConnection().getConn();
+             PreparedStatement pst = conn.prepareStatement(query))
+        {
             rs = pst.executeQuery();
             while (rs.next()) {
                 Parent parent = new Parent(rs.getString("Numtel"), rs.getString("Nompar"),
                         rs.getString("Prepar"));
                 parents.add(parent);
             }
+            rs.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -74,21 +77,20 @@ public class ParentDAO {
         return parents;
     }
 
-    public static Parent getParenByTel(String numTel) {
-        DbConnection conn = new DbConnection();
-        PreparedStatement pst;
-        ResultSet rs;
+    public Parent getParenByTel(String numTel) {
         String query = "SELECT * FROM Parent WHERE Numtel = ?";
         Parent parent = null;
 
-        try {
-            pst = conn.getConn().prepareStatement(query);
+        try (Connection conn = new DbConnection().getConn();
+             PreparedStatement pst = conn.prepareStatement(query))
+        {
             pst.setString(1, numTel);
             rs = pst.executeQuery();
             if (rs.next()) {
                 parent = new Parent(rs.getString("Numtel"),
                         rs.getString("Nompar"), rs.getString("Prepar"));
             }
+            rs.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

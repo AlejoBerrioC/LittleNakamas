@@ -4,21 +4,21 @@ import com.littlenakamas.bean.Educatrice;
 import com.littlenakamas.bean.Employe;
 import com.littlenakamas.bean.PersonnelAdministratif;
 import com.littlenakamas.util.DbConnection;
+import oracle.jdbc.proxy.annotation.Pre;
 
 import java.sql.*;
 import java.util.*;
 
 public class EmployeDAO {
-    DbConnection conn = new DbConnection();
-    PreparedStatement pst;
     ResultSet rs;
 
     public void addTeacher(Educatrice newTeacher) {
         String query = "INSERT INTO Employe (Nomemp, Preemp, Typeemp, Diplome, Nbenfant)" +
                 "VALUES (?, ?, 'Educatrice', ?, ?)";
 
-        try {
-            pst = conn.getConn().prepareStatement(query);
+        try (Connection conn = new DbConnection().getConn();
+             PreparedStatement pst = conn.prepareStatement(query))
+        {
             pst.setString(1, newTeacher.nomEmp);
             pst.setString(2, newTeacher.preEmp);
             pst.setString(3, newTeacher.getDiplome());
@@ -34,8 +34,9 @@ public class EmployeDAO {
         String query = "INSERT INTO Employe (Nomemp, Preemp, Typeemp, Numtel, Emailprof)" +
                 "VALUES (?, ?, 'PersonnelAdministratif', ?, ?)";
 
-        try {
-            pst = conn.getConn().prepareStatement(query);
+        try (Connection conn = new DbConnection().getConn();
+             PreparedStatement pst = conn.prepareStatement(query))
+        {
             pst.setString(1, newAdminis.nomEmp);
             pst.setString(2, newAdminis.preEmp);
             pst.setString(3, newAdminis.getNumTel());
@@ -49,8 +50,9 @@ public class EmployeDAO {
     public void deleteEmploye(int numEmp) {
         String query = "DELETE FROM Employe WHERE Numemp = ?";
 
-        try {
-            pst = conn.getConn().prepareStatement(query);
+        try (Connection conn = new DbConnection().getConn();
+             PreparedStatement pst = conn.prepareStatement(query))
+        {
             pst.setInt(1, numEmp);
             pst.executeUpdate();
         } catch (SQLException e) {
@@ -61,8 +63,9 @@ public class EmployeDAO {
     public void updateTeacher(Educatrice teacher, int numEmp) {
         String query = "UPDATE Employe SET Nomemp = ?, Preemp = ?, Diplome = ?, Nbenfant = ? WHERE Numemp = ?";
 
-        try {
-            pst = conn.getConn().prepareStatement(query);
+        try (Connection conn = new DbConnection().getConn();
+             PreparedStatement pst = conn.prepareStatement(query))
+        {
             pst.setString(1, teacher.nomEmp);
             pst.setString(2, teacher.preEmp);
             pst.setString(3, teacher.getDiplome());
@@ -77,8 +80,9 @@ public class EmployeDAO {
     public void updateAdminis(PersonnelAdministratif adminis, int numEmp) {
         String query = "UPDATE Employe SET Nomemp = ?, Preemp = ?, Numtel = ?, Emailprof = ? WHERE Numemp = ?";
 
-        try {
-            pst = conn.getConn().prepareStatement(query);
+        try (Connection conn = new DbConnection().getConn();
+             PreparedStatement pst = conn.prepareStatement(query))
+        {
             pst.setString(1, adminis.nomEmp);
             pst.setString(2, adminis.preEmp);
             pst.setString(3, adminis.getNumTel());
@@ -93,14 +97,15 @@ public class EmployeDAO {
     public ArrayList<Employe> getEmployes() {
         String query = "SELECT Numemp, Nomemp, Preemp FROM Employe";
         ArrayList<Employe> employes = new ArrayList<>();
-        try {
-            pst = conn.getConn().prepareStatement(query);
+        try (Connection conn = new DbConnection().getConn();
+             PreparedStatement pst = conn.prepareStatement(query)) {
             rs = pst.executeQuery();
             while (rs.next()) {
                 Employe employe = new Employe(rs.getInt("Numemp"),
                         rs.getString("Nomemp"), rs.getString("Preemp"));
                 employes.add(employe);
             }
+            rs.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -111,8 +116,8 @@ public class EmployeDAO {
         String query = "SELECT Numemp, Nomemp, Preemp, Diplome, Nbenfant FROM Employe WHERE Typeemp = 'Educatrice'";
         ArrayList<Educatrice> teachers = new ArrayList<>();
 
-        try {
-            pst = conn.getConn().prepareStatement(query);
+        try (Connection conn = new DbConnection().getConn();
+             PreparedStatement pst = conn.prepareStatement(query)) {
             rs = pst.executeQuery();
             while (rs.next()) {
                 Educatrice educatrice = new Educatrice(rs.getInt("Numemp"), rs.getString("Nomemp"),
@@ -120,6 +125,7 @@ public class EmployeDAO {
                         rs.getInt("Nbenfant"));
                 teachers.add(educatrice);
             }
+            rs.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -130,8 +136,8 @@ public class EmployeDAO {
         String query = "SELECT Numemp, Nomemp, Preemp, Numtel, Emailprof FROM Employe WHERE Typeemp = 'PersonnelAdministratif'";
         ArrayList<PersonnelAdministratif> administratifs = new ArrayList<>();
 
-        try {
-            pst = conn.getConn().prepareStatement(query);
+        try (Connection conn = new DbConnection().getConn();
+             PreparedStatement pst = conn.prepareStatement(query)) {
             rs = pst.executeQuery();
             while (rs.next()) {
                 PersonnelAdministratif administratif = new PersonnelAdministratif(rs.getInt("Numemp"), rs.getString("Nomemp"),
@@ -139,6 +145,7 @@ public class EmployeDAO {
                         rs.getString("Emailprof"));
                 administratifs.add(administratif);
             }
+            rs.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -146,20 +153,18 @@ public class EmployeDAO {
         return administratifs;
     }
 
-    public static Employe getEmployeByNumEmp(int numEmp) {
-        DbConnection conn = new DbConnection();
-        PreparedStatement pst;
-        ResultSet rs;
+    public Employe getEmployeByNumEmp(int numEmp) {
         String query = "SELECT Numemp, Nomemp, Preemp FROM Employe WHERE Numemp = ?";
         Employe employe = null;
-        try {
-            pst = conn.getConn().prepareStatement(query);
+        try (Connection conn = new DbConnection().getConn();
+             PreparedStatement pst = conn.prepareStatement(query)) {
             pst.setInt(1, numEmp);
             rs = pst.executeQuery();
             if (rs.next()) {
                 employe = new Employe(rs.getInt("Numemp"), rs.getString("Nomemp"),
                         rs.getString("Preemp"));
             }
+            rs.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -169,8 +174,8 @@ public class EmployeDAO {
     public Employe getEmployeByLogin(String name, String lastname, String password) {
         String query = "SELECT * FROM Employe WHERE NOMEMP = ? AND PREEMP = ? AND PASSWORD = ?";
         Employe employe = null;
-        try {
-            pst = conn.getConn().prepareStatement(query);
+        try (Connection conn = new DbConnection().getConn();
+             PreparedStatement pst = conn.prepareStatement(query)) {
             pst.setString(1, lastname);
             pst.setString(2, name);
             pst.setString(3, password);
@@ -179,6 +184,7 @@ public class EmployeDAO {
                 employe = new Employe(rs.getInt("Numemp"), rs.getString("Nomemp"),
                         rs.getString("Preemp"));
             }
+            rs.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

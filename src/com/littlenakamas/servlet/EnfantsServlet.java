@@ -39,8 +39,6 @@ public class EnfantsServlet extends HttpServlet {
                 new EnfantDAO().deleteEnfant(Integer.parseInt(req.getParameter("children-number")));
                 resp.sendRedirect("enfant");
                 break;
-            default:
-                break;
         }
 
     }
@@ -59,17 +57,15 @@ public class EnfantsServlet extends HttpServlet {
                 HttpSession session = req.getSession();
                 int numEmp = (int) session.getAttribute("employe_id");
 
-                new EnfantDAO().addEnfant(new Enfant(0, name, lastname, age, ParentDAO.getParenByTel(parentNumber)),
+                new EnfantDAO().addEnfant(new Enfant(0, name, lastname, age, new ParentDAO().getParenByTel(parentNumber)),
                         numEmp);
                 resp.sendRedirect("enfant");
                 break;
             case "/enfantEdit":
                 new EnfantDAO().updateEnfant(new Enfant(Integer.parseInt(req.getParameter("children-old-number")),
                         req.getParameter("children-new-name"), req.getParameter("children-new-lastname"), Integer.parseInt(req.getParameter("children-new-age")),
-                        ParentDAO.getParenByTel(req.getParameter("children-new-parent"))), Integer.parseInt(req.getParameter("children-old-number")));
+                        new ParentDAO().getParenByTel(req.getParameter("children-new-parent"))), Integer.parseInt(req.getParameter("children-old-number")));
                 resp.sendRedirect("enfant");
-                break;
-            default:
                 break;
         }
 

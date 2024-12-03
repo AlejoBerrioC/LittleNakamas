@@ -15,8 +15,9 @@ public class GarderieDAO {
         String query = "INSERT INTO Garderie (Nomgard, Capgard)" +
                 "VALUES (?, ?)";
 
-        try {
-            pst = conn.getConn().prepareStatement(query);
+        try (Connection conn = new DbConnection().getConn();
+             PreparedStatement pst = conn.prepareStatement(query))
+        {
             pst.setString(1, newGarderie.nomGuard);
             pst.setInt(2, newGarderie.capGuard);
             pst.executeUpdate();
@@ -28,8 +29,9 @@ public class GarderieDAO {
     public void deleteGarderie(String nomGarderie) {
         String query = "DELETE FROM Garderie WHERE Nomgard = ?";
 
-        try {
-            pst = conn.getConn().prepareStatement(query);
+        try (Connection conn = new DbConnection().getConn();
+             PreparedStatement pst = conn.prepareStatement(query))
+        {
             pst.setString(1, nomGarderie);
             pst.executeUpdate();
         } catch (SQLException e) {
